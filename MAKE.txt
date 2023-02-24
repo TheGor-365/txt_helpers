@@ -1,0 +1,1436 @@
+---------------
+MAKEFILE & MAKE
+---------------
+
+
+
+about Makefile: https://github.com/Hexlet/hexletguides.github.io/blob/main/_i18n/ru/_posts/2020-07-30-makefile-as-task-runner.md
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------
+Example:
+--------
+
+$ make setup
+$ make start
+$ make test
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------------
+Makefile Syntax:
+----------------
+
+1: 																	# имя цели, поддерживается kebab-case и snake_case
+	команда1 														# для отступа используется табуляция, это важная деталь 
+	команда2 														# команды будут выполняться последовательно и только в случае успеха предыдущей
+
+
+---
+
+цель1: цель2 														# такой синтаксис указывает на зависимость задач — цель1 зависит от цель2
+	команда2 														# команда2 выполнится только в случае успеха команды из цель2
+
+цель2:
+	команда1
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------
+Bad practice example:
+---------------------
+
+up: 																# разворачивание и запуск
+	cp -n .env.example .env
+	touch database/database.sqlite
+	composer install
+	npm install
+	php artisan key:generate
+	php artisan migrate --seed
+	heroku local -f Procfile.dev # запуск проекта
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------
+Best practice example:
+----------------------
+
+env-prepare: 														# создать .env-файл для секретов
+	cp -n .env.example .env
+
+sqlite-prepare: 													# подготовить локальную БД
+	touch database/database.sqlite
+
+install: 															# установить зависимости
+	composer install
+	npm install
+
+key: 																# сгенерировать ключи
+	php artisan key:generate
+
+db-prepare: 														# загрузить данные в БД
+	php artisan migrate --seed
+
+start: 																# запустить приложение
+	heroku local -f Procfile.dev
+
+
+
+---
+
+setup: env-prepare sqlite-prepare install key db-prepare 			# можно ссылаться на цели, описанные ниже
+
+env-prepare:
+	cp -n .env.example .env
+
+sqlite-prepare:
+	touch database/database.sqlite
+
+install:
+	composer install
+	npm install
+
+key:
+	php artisan key:generate
+
+db-prepare:
+	php artisan migrate --seed
+
+start:
+	heroku local -f Procfile.dev
+
+
+
+---
+
+$ make setup 														# выполнит последовательно: env-prepare sqlite-prepare install key db-prepare
+$ make start
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------
+Error:
+------
+
+! make: <имя-цели> is up to date !
+
+
+---
+
+test: 																# цель в мейкфайле
+	php artisan test
+
+
+
+---
+
+$ ls
+Makefile
+test 																# в файловой системе находится каталог с именем, как у цели в мейкфайле
+
+$ make test 														# попытка запустить тесты
+make: `test` is up to date.
+
+
+
+---
+
+test:
+	php artisan test
+
+.PHONY: test
+
+
+$ make test
+✓ All tests passed!
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------
+Command chains:
+---------------
+
+env-prepare:
+	cp -n .env.example .env 										# если файл уже создан, то повторный запуск этой команды вернёт ошибку
+
+
+
+---
+
+env-prepare:
+	cp -n .env.example .env || true 								# теперь любой исход выполнения команды будет считаться успешным
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------
+Varialbes:
+----------
+
+say:
+	echo "Hello, $(HELLO)!"
+
+
+
+---
+
+$ make say HELLO=World
+
+echo "Hello, World!"
+Hello, World!
+
+
+$ make say HELLO=Kitty
+
+echo "Hello, Kitty!"
+Hello, Kitty!
+
+
+
+
+---
+
+HELLO?=World 														# знак вопроса указывает, что переменная опциональна. Значение после присвоения можно не указывать
+
+say:
+	echo "Hello, $(HELLO)!"
+
+
+
+---
+
+$ make say
+
+echo "Hello, World!"
+Hello, World!
+
+$ make say HELLO=Kitty
+
+echo "Hello, Kitty!"
+Hello, Kitty!
+
+
+
+---
+
+project-env-generate:
+	docker run --rm -e RUNNER_PLAYBOOK=ansible/development.yml \
+		-v $(CURDIR)/ansible/development:/runner/inventory \ 		# $(CURDIR) - то же самое, что $PWD в терминале
+		-v $(CURDIR):/runner/project \
+		ansible/ansible-runner
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------
+Enterprise Makefile examples:
+-----------------------------
+
+--------------------
+Codebattle Makefile:
+--------------------
+
+
+include make-compose.mk
+
+pg:
+	docker compose up -d db-local
+
+clean:
+	rm -rf services/app/_build
+	rm -rf services/app/deps
+	rm -rf services/app/.elixir_ls
+	rm -rf services/app/priv/static
+	rm -rf node_modules
+	rm -rf tmp/battle_asserts
+
+test:
+	make -C ./services/app/ test
+
+test-code-checkers:
+	make -C ./services/app/ test-code-checkers
+
+terraform-vars-generate:
+	docker run --rm -it -v $(CURDIR):/app -w /app williamyeh/ansible:alpine3 ansible-playbook ansible/terraform.yml -i ansible/production -vv --vault-password-file=tmp/ansible-vault-password
+
+setup: setup-env compose-setup
+
+setup-env:
+	docker run --rm -v $(CURDIR):/app -w /app williamyeh/ansible:alpine3 ansible-playbook ansible/development.yml -i ansible/development -vv
+
+setup-env-local:
+	ansible-playbook ansible/development.yml -i ansible/development -vv
+
+ansible-edit-secrets:
+	ansible-vault edit --vault-password-file tmp/ansible-vault-password ansible/production/group_vars/all/vault.yml
+
+ansible-vault-edit-production:
+	docker run --rm -it -v $(CURDIR):/app -w /app williamyeh/ansible:alpine3 ansible-vault edit --vault-password-file tmp/ansible-vault-password ansible/production/group_vars/all/vault.yml
+
+release:
+	make -C services/app release
+
+docker-build-app:
+	docker pull codebattle/app:compile-stage || true
+	docker pull codebattle/app:latest        || true
+	docker build --target compile-image \
+				--cache-from=codebattle/app:compile-stage \
+				--file services/app/Dockerfile \
+				--tag codebattle/app:compile-stage services/app
+	docker build --target runtime-image \
+				--cache-from=codebattle/app:compile-stage \
+				--cache-from=codebattle/app:latest \
+				--file services/app/Dockerfile \
+				--tag codebattle/app:latest services/app
+
+docker-push-app:
+	docker push codebattle/app:compile-stage
+	docker push codebattle/app:latest
+
+
+
+
+---
+
+---------------
+Babel Makefile:
+---------------
+
+
+FLOW_COMMIT = 92bbb5e9dacb8185aa73ea343954d0434b42c40b
+TEST262_COMMIT = 051631f58b3ba78fe0eac9ad34ed17ab5cb72600
+TYPESCRIPT_COMMIT = ce85d647ef88183c019588bcf398320ce29b625a
+
+# Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
+export FORCE_COLOR = true
+
+SOURCES = packages codemods eslint
+
+COMMA := ,
+EMPTY :=
+SPACE := $(EMPTY) $(EMPTY)
+COMMA_SEPARATED_SOURCES = $(subst $(SPACE),$(COMMA),$(SOURCES))
+
+YARN := yarn
+NODE := $(YARN) node
+MAKEJS := node Makefile.js
+
+
+.PHONY: build build-dist watch lint fix clean test-clean test-only test test-ci publish bootstrap use-esm use-cjs
+
+build:
+	$(MAKEJS) build
+
+build-bundle:
+	$(MAKEJS) build-bundle
+
+build-no-bundle:
+	$(MAKEJS) build-no-bundle
+
+generate-tsconfig:
+	$(MAKEJS) generate-tsconfig
+
+generate-type-helpers:
+	$(MAKEJS) generate-type-helpers
+
+build-flow-typings:
+	$(MAKEJS) build-flow-typings
+
+# For TypeScript older than 3.7
+build-typescript-legacy-typings:
+	$(MAKEJS) build-typescript-legacy-typings
+
+build-standalone:
+	$(MAKEJS) build-standalone
+
+build-standalone-ci: build-no-bundle-ci
+	$(MAKEJS) build-standalone
+
+prepublish-build-standalone:
+	$(MAKEJS) prepublish-build-standalone
+
+build-dist: build-plugin-transform-runtime-dist
+
+build-plugin-transform-runtime-dist:
+	$(MAKEJS) build-plugin-transform-runtime-dist
+
+watch:
+	$(MAKEJS) watch
+
+code-quality: tscheck lint
+
+tscheck:
+	$(MAKEJS) tscheck
+
+lint-ci: lint check-compat-data-ci
+
+check-compat-data-ci: check-compat-data
+
+lint:
+	$(MAKEJS) lint
+
+fix: fix-json fix-js
+
+fix-js:
+	$(MAKEJS) fix-js
+
+fix-json:
+	$(MAKEJS) fix-json
+
+clean:
+	$(MAKEJS) clean
+
+test-cov:
+	$(MAKEJS) test-cov
+
+test: lint test-only
+
+clone-license:
+	$(MAKEJS) clone-license
+
+prepublish-build:
+	$(MAKEJS) prepublish-build
+
+prepublish:
+	$(MAKEJS) prepublish
+
+bootstrap-only:
+	$(MAKEJS) bootstrap-only
+
+bootstrap:
+	$(MAKEJS) bootstrap
+
+use-cjs:
+	$(MAKEJS) use-cjs
+
+use-esm:
+	$(MAKEJS) use-esm
+
+clean-lib:
+	$(MAKEJS) clean-lib
+
+clean-runtime-helpers:
+	$(MAKEJS) clean-runtime-helpers
+
+clean-all:
+	$(MAKEJS) clean-all
+
+
+build-no-bundle-ci: bootstrap-only
+	$(YARN) gulp build-dev
+	$(MAKE) build-flow-typings
+	$(MAKE) build-dist
+
+# Does not work on Windows; use "$(YARN) jest" instead
+test-only:
+	BABEL_ENV=test ./scripts/test.sh
+	$(MAKE) test-clean
+
+check-compat-data:
+	cd packages/babel-compat-data; CHECK_COMPAT_DATA=true $(YARN) run build-data
+
+build-compat-data:
+	cd packages/babel-compat-data; $(YARN) run build-data
+
+update-env-corejs-fixture:
+	rm -rf packages/babel-preset-env/node_modules/core-js-compat
+	$(YARN)
+	$(MAKE) build-bundle
+	OVERWRITE=true $(YARN) jest packages/babel-preset-env
+
+test-ci: build-standalone-ci
+	BABEL_ENV=test $(YARN) jest --maxWorkers=100% --ci
+	$(MAKE) test-clean
+
+test-ci-coverage:
+	BABEL_ENV=test BABEL_COVERAGE=true $(MAKE) bootstrap
+	BABEL_ENV=test BABEL_COVERAGE=true $(YARN) jest --maxWorkers=100% --ci --coverage
+
+bootstrap-flow:
+	rm -rf build/flow
+	mkdir -p build
+	git clone --filter=blob:none --sparse --single-branch --shallow-since=2021-05-01 https://github.com/facebook/flow.git build/flow
+	cd build/flow && git sparse-checkout set "src/parser/test/flow"
+	cd build/flow && git checkout -q $(FLOW_COMMIT)
+
+test-flow:
+	$(NODE) scripts/parser-tests/flow
+
+test-flow-update-allowlist:
+	$(NODE) scripts/parser-tests/flow --update-allowlist
+
+bootstrap-typescript:
+	rm -rf ./build/typescript
+	mkdir -p ./build
+	git clone --filter=blob:none --sparse --single-branch --shallow-since=2022-04-01 https://github.com/microsoft/TypeScript.git ./build/typescript
+	cd build/typescript && git sparse-checkout set "tests"
+	cd build/typescript && git checkout -q $(TYPESCRIPT_COMMIT)
+
+test-typescript:
+	$(NODE) scripts/parser-tests/typescript
+
+test-typescript-update-allowlist:
+	$(NODE) scripts/parser-tests/typescript --update-allowlist
+
+bootstrap-test262:
+	rm -rf build/test262
+	mkdir -p build
+	git clone --filter=blob:none --sparse --single-branch --shallow-since=2021-05-01 https://github.com/tc39/test262.git build/test262
+	cd build/test262 && git sparse-checkout set "test"
+	cd build/test262 && git checkout -q $(TEST262_COMMIT)
+
+test-test262:
+	$(NODE) scripts/parser-tests/test262
+
+test-test262-update-allowlist:
+	$(NODE) scripts/parser-tests/test262 --update-allowlist
+
+
+new-version-checklist:
+	# @echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	# @echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	# @echo "!!!!!!                                                   !!!!!!"
+	# @echo "!!!!!!         Write any message that should             !!!!!!"
+	# @echo "!!!!!!            block the release here                 !!!!!!"
+	# @echo "!!!!!!                                                   !!!!!!"
+	# @echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	# @echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	# @exit 1
+
+new-version:
+	$(MAKE) new-version-checklist
+	git pull --rebase
+	$(YARN) release-tool version -f @babel/standalone
+
+# NOTE: Run make new-version first
+publish:
+	@echo "Please confirm you have stopped make watch. (y)es, [N]o:"; \
+	read CLEAR; \
+	if [ "_$$CLEAR" != "_y" ]; then \
+		exit 1; \
+	fi
+	$(MAKE) prepublish
+	$(YARN) release-tool publish
+	$(MAKE) clean
+
+publish-test:
+ifneq ("$(I_AM_USING_VERDACCIO)", "I_AM_SURE")
+	echo "You probably don't know what you are doing"
+	exit 1
+endif
+	$(YARN) release-tool version $(VERSION) --all --yes --tag-version-prefix="version-e2e-test-"
+	$(MAKE) prepublish-build
+	node ./scripts/set-module-type.js clean
+	YARN_NPM_PUBLISH_REGISTRY=http://localhost:4873 $(YARN) release-tool publish --yes --tag-version-prefix="version-e2e-test-"
+	$(MAKE) clean
+
+
+
+
+---
+
+--------------------
+Kubernetes Makefile:
+--------------------
+
+# Copyright 2016 The Kubernetes Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+DBG_MAKEFILE ?=
+ifeq ($(DBG_MAKEFILE),1)
+    $(warning ***** starting Makefile for goal(s) "$(MAKECMDGOALS)")
+    $(warning ***** $(shell date))
+else
+    # If we're not debugging the Makefile, don't echo recipes.
+    MAKEFLAGS += -s
+endif
+
+
+# Old-skool build tools.
+#
+# Commonly used targets (see each target for more information):
+#   all: Build code.
+#   test: Run tests.
+#   clean: Clean up.
+
+# It's necessary to set this because some environments don't link sh -> bash.
+SHELL := /usr/bin/env bash -o errexit -o pipefail -o nounset
+BASH_ENV := ./hack/lib/logging.sh
+
+# Define variables so `make --warn-undefined-variables` works.
+PRINT_HELP ?=
+
+# We don't need make's built-in rules.
+MAKEFLAGS += --no-builtin-rules
+.SUFFIXES:
+
+# Constants used throughout.
+.EXPORT_ALL_VARIABLES:
+OUT_DIR ?= _output
+BIN_DIR := $(OUT_DIR)/bin
+PRJ_SRC_PATH := k8s.io/kubernetes
+GENERATED_FILE_PREFIX := zz_generated.
+
+# Metadata for driving the build lives here.
+META_DIR := .make
+
+ifdef KUBE_GOFLAGS
+$(info KUBE_GOFLAGS is now deprecated. Please use GOFLAGS instead.)
+ifndef GOFLAGS
+GOFLAGS := $(KUBE_GOFLAGS)
+unexport KUBE_GOFLAGS
+else
+$(error Both KUBE_GOFLAGS and GOFLAGS are set. Please use just GOFLAGS)
+endif
+endif
+
+# This controls the verbosity of the build.  Higher numbers mean more output.
+KUBE_VERBOSE ?= 1
+
+define ALL_HELP_INFO
+# Build code.
+#
+# Args:
+#   WHAT: Directory names to build.  If any of these directories has a 'main'
+#     package, the build will produce executable files under $(OUT_DIR)/bin.
+#     If not specified, "everything" will be built.
+#     "vendor/<module>/<path>" is accepted as alias for "<module>/<path>".
+#     "ginkgo" is an alias for the ginkgo CLI.
+#   GOFLAGS: Extra flags to pass to 'go' when building.
+#   GOLDFLAGS: Extra linking flags passed to 'go' when building.
+#   GOGCFLAGS: Additional go compile flags passed to 'go' when building.
+#   DBG: If set to "1", build with optimizations disabled for easier
+#     debugging.  Any other value is ignored.
+#
+# Example:
+#   make
+#   make all
+#   make all WHAT=cmd/kubelet GOFLAGS=-v
+#   make all DBG=1
+#     Note: Specify DBG=1 for building unstripped binaries, which allows you to use code debugging
+#           tools like delve. When DBG is unspecified, it defaults to "-s -w" which strips debug
+#           information.
+endef
+.PHONY: all
+ifeq ($(PRINT_HELP),y)
+all:
+	echo "$$ALL_HELP_INFO"
+else
+all: generated_files
+	hack/make-rules/build.sh $(WHAT)
+endif
+
+define GINKGO_HELP_INFO
+# Build ginkgo
+#
+# Example:
+# make ginkgo
+endef
+.PHONY: ginkgo
+ifeq ($(PRINT_HELP),y)
+ginkgo:
+	echo "$$GINKGO_HELP_INFO"
+else
+ginkgo:
+	hack/make-rules/build.sh github.com/onsi/ginkgo/v2/ginkgo
+endif
+
+define VERIFY_HELP_INFO
+# Runs all the presubmission verifications.
+#
+# Args:
+#   BRANCH: Branch to be passed to verify-vendor.sh script.
+#   WHAT: List of checks to run
+#
+# Example:
+#   make verify
+#   make verify BRANCH=branch_x
+#   make verify WHAT="gofmt typecheck"
+endef
+.PHONY: verify
+ifeq ($(PRINT_HELP),y)
+verify:
+	echo "$$VERIFY_HELP_INFO"
+else
+verify:
+	KUBE_VERIFY_GIT_BRANCH=$(BRANCH) hack/make-rules/verify.sh
+endif
+
+define QUICK_VERIFY_HELP_INFO
+# Runs only the presubmission verifications that aren't slow.
+#
+# Example:
+#   make quick-verify
+endef
+.PHONY: quick-verify
+ifeq ($(PRINT_HELP),y)
+quick-verify:
+	echo "$$QUICK_VERIFY_HELP_INFO"
+else
+quick-verify:
+	QUICK=true SILENT=false hack/make-rules/verify.sh
+endif
+
+define UPDATE_HELP_INFO
+# Runs all the generated updates.
+#
+# Example:
+# make update
+endef
+.PHONY: update
+ifeq ($(PRINT_HELP),y)
+update:
+	echo "$$UPDATE_HELP_INFO"
+else
+update: generated_files
+	CALLED_FROM_MAIN_MAKEFILE=1 hack/make-rules/update.sh
+endif
+
+define CHECK_TEST_HELP_INFO
+# Build and run tests.
+#
+# Args:
+#   WHAT: Directory names to test.  All *_test.go files under these
+#     directories will be run.  If not specified, "everything" will be tested.
+#   TESTS: Same as WHAT.
+#   KUBE_COVER: Whether to run tests with code coverage. Set to 'y' to enable coverage collection.
+#   GOFLAGS: Extra flags to pass to 'go' when building.
+#   GOLDFLAGS: Extra linking flags to pass to 'go' when building.
+#   GOGCFLAGS: Additional go compile flags passed to 'go' when building.
+#
+# Example:
+#   make check
+#   make test
+#   make check WHAT=./pkg/kubelet GOFLAGS=-v
+endef
+.PHONY: check test
+ifeq ($(PRINT_HELP),y)
+check test:
+	echo "$$CHECK_TEST_HELP_INFO"
+else
+check test: generated_files
+	hack/make-rules/test.sh $(WHAT) $(TESTS)
+endif
+
+define TEST_IT_HELP_INFO
+# Build and run integration tests.
+#
+# Args:
+#   WHAT: Directory names to test.  All *_test.go files under these
+#     directories will be run.  If not specified, "everything" will be tested.
+#
+# Example:
+#   make test-integration
+endef
+.PHONY: test-integration
+ifeq ($(PRINT_HELP),y)
+test-integration:
+	echo "$$TEST_IT_HELP_INFO"
+else
+test-integration: generated_files
+	hack/make-rules/test-integration.sh $(WHAT)
+endif
+
+define TEST_E2E_NODE_HELP_INFO
+# Build and run node end-to-end tests.
+#
+# Args:
+#  FOCUS: Regexp that matches the tests to be run.  Defaults to "".
+#  SKIP: Regexp that matches the tests that needs to be skipped.
+#    Defaults to "\[Flaky\]|\[Slow\]|\[Serial\]".
+#  TEST_ARGS: A space-separated list of arguments to pass to node e2e test.
+#    Defaults to "".
+#  RUN_UNTIL_FAILURE: If true, pass --untilItFails to ginkgo so tests are run
+#    repeatedly until they fail.  Defaults to false.
+#  REMOTE: If true, run the tests on a remote host.  Defaults to false.
+#  REMOTE_MODE: For REMOTE=true only.  Mode for remote execution (eg. gce, ssh).
+#    If set to "gce", an instance can be provisioned or reused from GCE. If set
+#    to "ssh", provided `HOSTS` must be IPs or resolvable.  Defaults to "gce".
+#  ARTIFACTS: Local directory to scp test artifacts into from the remote hosts
+#    for REMOTE=true. Local directory to write juntil xml results into for REMOTE=false.
+#    Defaults to "/tmp/_artifacts/$$(date +%y%m%dT%H%M%S)".
+#  TIMEOUT: For REMOTE=true only. How long (in golang duration format) to wait
+#    for ginkgo tests to complete. Defaults to 45m.
+#  PARALLELISM: The number of ginkgo nodes to run.  Defaults to 8.
+#  CONTAINER_RUNTIME_ENDPOINT: remote container endpoint to connect to.
+#    Defaults to "/run/containerd/containerd.sock".
+#  IMAGE_SERVICE_ENDPOINT: remote image endpoint to connect to, to prepull images.
+#    Used when RUNTIME is set to "remote".
+#  IMAGE_CONFIG_FILE: path to a file containing image configuration.
+#  IMAGE_CONFIG_DIR: path to image config files.
+#  SYSTEM_SPEC_NAME: The name of the system spec to be used for validating the
+#    image in the node conformance test. The specs are located at
+#    test/e2e_node/system/specs/. For example, "SYSTEM_SPEC_NAME=gke" will use
+#    the spec at test/e2e_node/system/specs/gke.yaml. If unspecified, the
+#    default built-in spec (system.DefaultSpec) will be used.
+#  IMAGES: For REMOTE=true only.  Comma delimited list of images for creating
+#    remote hosts to run tests against.  Defaults to a recent image.
+#  HOSTS: For REMOTE=true only.  Comma delimited list of running gce hosts to
+#    run tests against.  Defaults to "".
+#  DELETE_INSTANCES: For REMOTE=true only.  Delete any instances created as
+#    part of this test run.  Defaults to false.
+#  PREEMPTIBLE_INSTANCES: For REMOTE=true only.  Mark created gce instances
+#    as preemptible.  Defaults to false.
+#  CLEANUP: For REMOTE=true only.  If false, do not stop processes or delete
+#    test files on remote hosts.  Defaults to true.
+#  IMAGE_PROJECT: For REMOTE=true only.  Project containing images provided to
+#    $$IMAGES.  Defaults to "cos-cloud".
+#  INSTANCE_PREFIX: For REMOTE=true only.  Instances created from images will
+#    have the name "$${INSTANCE_PREFIX}-$${IMAGE_NAME}".  Defaults to "test".
+#  INSTANCE_METADATA: For REMOTE=true and running on GCE only.
+#  GUBERNATOR: For REMOTE=true only. Produce link to Gubernator to view logs.
+#    Defaults to false.
+#  TEST_SUITE: For REMOTE=true only. Test suite to use. Defaults to "default".
+#  SSH_KEY: For REMOTE=true only. Path to SSH key to use.
+#  SSH_OPTIONS: For REMOTE=true only. SSH options to use.
+#  RUNTIME_CONFIG: The runtime configuration for the API server on the node e2e tests.
+#
+# Example:
+#   make test-e2e-node FOCUS=Kubelet SKIP=container
+#   make test-e2e-node REMOTE=true DELETE_INSTANCES=true
+#   make test-e2e-node TEST_ARGS='--kubelet-flags="--cgroups-per-qos=true"'
+# Build and run tests.
+endef
+.PHONY: test-e2e-node
+ifeq ($(PRINT_HELP),y)
+test-e2e-node:
+	echo "$$TEST_E2E_NODE_HELP_INFO"
+else
+test-e2e-node: ginkgo generated_files
+	hack/make-rules/test-e2e-node.sh
+endif
+
+define TEST_CMD_HELP_INFO
+# Build and run cmdline tests.
+#
+# Args:
+#   WHAT: List of tests to run, check test/cmd/legacy-script.sh for names.
+#     For example, WHAT=deployment will run run_deployment_tests function.
+# Example:
+#   make test-cmd
+#   make test-cmd WHAT="deployment impersonation"
+endef
+.PHONY: test-cmd
+ifeq ($(PRINT_HELP),y)
+test-cmd:
+	echo "$$TEST_CMD_HELP_INFO"
+else
+test-cmd: generated_files
+	hack/make-rules/test-cmd.sh
+endif
+
+define CLEAN_HELP_INFO
+# Remove all build artifacts.
+#
+# Example:
+#   make clean
+#
+# TODO(thockin): call clean_generated when we stop committing generated code.
+endef
+.PHONY: clean
+ifeq ($(PRINT_HELP),y)
+clean:
+	echo "$$CLEAN_HELP_INFO"
+else
+clean: clean_meta
+	build/make-clean.sh
+	hack/make-rules/clean.sh
+endif
+
+define CLEAN_META_HELP_INFO
+# Remove make-related metadata files.
+#
+# Example:
+#   make clean_meta
+endef
+.PHONY: clean_meta
+ifeq ($(PRINT_HELP),y)
+clean_meta:
+	echo "$$CLEAN_META_HELP_INFO"
+else
+clean_meta:
+	rm -rf $(META_DIR)
+endif
+
+define CLEAN_GENERATED_HELP_INFO
+# Remove all auto-generated artifacts. Generated artifacts in staging folder should not be removed as they are not
+# generated using generated_files.
+#
+# Example:
+#   make clean_generated
+endef
+.PHONY: clean_generated
+ifeq ($(PRINT_HELP),y)
+clean_generated:
+	echo "$$CLEAN_GENERATED_HELP_INFO"
+else
+clean_generated:
+	find . -type f -name '$(GENERATED_FILE_PREFIX)*'  | xargs rm -f
+endif
+
+define VET_HELP_INFO
+# Run 'go vet'.
+#
+# Args:
+#   WHAT: Directory names to vet.  All *.go files under these
+#     directories will be vetted.  If not specified, "everything" will be
+#     vetted.
+#
+# Example:
+#   make vet
+#   make vet WHAT=./pkg/kubelet
+endef
+.PHONY: vet
+ifeq ($(PRINT_HELP),y)
+vet:
+	echo "$$VET_HELP_INFO"
+else
+vet: generated_files
+	CALLED_FROM_MAIN_MAKEFILE=1 hack/make-rules/vet.sh $(WHAT)
+endif
+
+define RELEASE_HELP_INFO
+# Build a release
+# Use the 'release-in-a-container' target to build the release when already in
+# a container vs. creating a new container to build in using the 'release'
+# target.  Useful for running in GCB.
+#
+# Example:
+#   make release
+#   make release-in-a-container
+endef
+.PHONY: release release-in-a-container
+ifeq ($(PRINT_HELP),y)
+release release-in-a-container:
+	echo "$$RELEASE_HELP_INFO"
+else
+release release-in-a-container: KUBE_BUILD_CONFORMANCE = y
+release:
+	build/release.sh
+release-in-a-container:
+	build/release-in-a-container.sh
+endif
+
+define RELEASE_IMAGES_HELP_INFO
+# Build release images
+#
+# Args:
+#   KUBE_BUILD_CONFORMANCE: Whether to build conformance testing image as well. Set to 'n' to skip.
+#
+# Example:
+#   make release-images
+endef
+.PHONY: release-images
+ifeq ($(PRINT_HELP),y)
+release-images: KUBE_BUILD_CONFORMANCE = y
+release-images:
+	echo "$$RELEASE_IMAGES_HELP_INFO"
+else
+release-images:
+	build/release-images.sh
+endif
+
+define RELEASE_SKIP_TESTS_HELP_INFO
+# Build a release, but skip tests
+#
+# Args:
+#   KUBE_RELEASE_RUN_TESTS: Whether to run tests. Set to 'y' to run tests anyways.
+#   KUBE_FASTBUILD: Whether to cross-compile for other architectures. Set to 'false' to do so.
+#   KUBE_DOCKER_REGISTRY: Registry of released images, default to registry.k8s.io
+#   KUBE_BASE_IMAGE_REGISTRY: Registry of base images for controlplane binaries, default to registry.k8s.io/build-image
+#
+# Example:
+#   make release-skip-tests
+#   make quick-release
+endef
+.PHONY: release-skip-tests quick-release
+ifeq ($(PRINT_HELP),y)
+release-skip-tests quick-release:
+	echo "$$RELEASE_SKIP_TESTS_HELP_INFO"
+else
+release-skip-tests quick-release: KUBE_RELEASE_RUN_TESTS = n
+release-skip-tests quick-release: KUBE_FASTBUILD = true
+release-skip-tests quick-release:
+	build/release.sh
+endif
+
+define QUICK_RELEASE_IMAGES_HELP_INFO
+# Build release images, but only for linux/amd64
+#
+# Args:
+#   KUBE_FASTBUILD: Whether to cross-compile for other architectures. Set to 'false' to do so.
+#   KUBE_BUILD_CONFORMANCE: Whether to build conformance testing image as well. Set to 'y' to do so.
+#
+# Example:
+#   make quick-release-images
+endef
+.PHONY: quick-release-images
+ifeq ($(PRINT_HELP),y)
+quick-release-images:
+	echo "$$QUICK_RELEASE_IMAGES_HELP_INFO"
+else
+quick-release-images: KUBE_FASTBUILD = true
+quick-release-images:
+	build/release-images.sh
+endif
+
+define PACKAGE_HELP_INFO
+# Package tarballs
+# Use the 'package-tarballs' target to run the final packaging steps of
+# a release.
+#
+# Example:
+#   make package-tarballs
+endef
+.PHONY: package package-tarballs
+ifeq ($(PRINT_HELP),y)
+package package-tarballs:
+	echo "$$PACKAGE_HELP_INFO"
+else
+package-tarballs: KUBE_BUILD_CONFORMANCE = y
+package package-tarballs:
+	build/package-tarballs.sh
+endif
+
+define CROSS_HELP_INFO
+# Cross-compile for all platforms
+# Use the 'cross-in-a-container' target to cross build when already in
+# a container vs. creating a new container to build from (build-image)
+# Useful for running in GCB.
+#
+# Example:
+#   make cross
+#   make cross-in-a-container
+endef
+.PHONY: cross cross-in-a-container
+ifeq ($(PRINT_HELP),y)
+cross cross-in-a-container:
+	echo "$$CROSS_HELP_INFO"
+else
+cross cross-in-a-container: KUBE_BUILD_CONFORMANCE = y
+cross:
+	hack/make-rules/cross.sh
+cross-in-a-container: KUBE_OUTPUT_SUBPATH = $(OUT_DIR)/dockerized
+cross-in-a-container:
+ifeq (,$(wildcard /.dockerenv))
+	echo -e "\nThe 'cross-in-a-container' target can only be used from within a docker container.\n"
+else
+	hack/make-rules/cross.sh
+endif
+endif
+
+define CMD_HELP_INFO
+# Add rules for all directories in cmd/
+#
+# Example:
+#   make kubectl kube-proxy
+endef
+#TODO: make EXCLUDE_TARGET auto-generated when there are other files in cmd/
+EXCLUDE_TARGET=OWNERS
+CMD_TARGET = $(filter-out %$(EXCLUDE_TARGET),$(notdir $(abspath $(wildcard cmd/*/))))
+.PHONY: $(CMD_TARGET)
+ifeq ($(PRINT_HELP),y)
+$(CMD_TARGET):
+	echo "$$CMD_HELP_INFO"
+else
+$(CMD_TARGET): generated_files
+	hack/make-rules/build.sh cmd/$@
+endif
+
+define GENERATED_FILES_HELP_INFO
+# Produce auto-generated files needed for the build.
+#
+# Example:
+#   make generated_files
+endef
+.PHONY: generated_files
+ifeq ($(PRINT_HELP),y)
+generated_files:
+	echo "$$GENERATED_FILES_HELP_INFO"
+else
+generated_files gen_openapi:
+	$(MAKE) -f Makefile.generated_files $@ CALLED_FROM_MAIN_MAKEFILE=1 SHELL="$(SHELL)"
+endif
+
+define HELP_INFO
+# Print make targets and help info
+#
+# Example:
+# make help
+endef
+.PHONY: help
+ifeq ($(PRINT_HELP),y)
+help:
+	echo "$$HELP_INFO"
+else
+help:
+	hack/make-rules/make-help.sh
+endif
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------
+Hexlet_sicp:
+------------
+
+include make-compose.mk
+
+console:
+	php artisan tinker
+
+deploy:
+	git push heroku main
+
+setup: env-prepare sqlite-prepare install key db-prepare ide-helper
+	npm run development
+
+install-app:
+	composer install
+
+install-frontend:
+	npm ci
+
+install: install-app install-frontend
+
+start:
+	heroku local -f Procfile.dev
+
+start-app:
+	php artisan serve --host 0.0.0.0 --port 8000
+
+start-frontend:
+	npm run watch
+
+db-prepare:
+	php artisan migrate:fresh --seed
+
+lint: lint-js lint-php
+
+lint-fix:
+	composer exec phpcbf -v
+
+test:
+	php artisan test
+
+test-coverage:
+	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
+
+analyse:
+	composer exec phpstan analyse -v -- --memory-limit=1G
+
+check: lint analyse test
+
+config-clear:
+	php artisan config:clear
+
+env-prepare:
+	cp -n .env.example .env || true
+
+sqlite-prepare:
+	touch database/database.sqlite
+
+key:
+	php artisan key:generate
+
+ide-helper:
+	php artisan ide-helper:eloquent
+	php artisan ide-helper:gen
+	php artisan ide-helper:meta
+	php artisan ide-helper:mod -n
+
+lint-js:
+	npm run lint-js
+
+lint-php:
+	composer exec phpcs -v
+
+lint-js-fix:
+	npm run lint-js-fix
+
+setup-git-hooks:
+	npx simple-git-hooks
+
+.PHONY: test
+
+pre-push-hook: lint
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------
+Hexlet BASIC:
+-------------
+
+S := web
+VERSION := latest
+PROJECT := hexlet-basics
+
+include make-compose.mk
+include make-services-web.mk
+include make-services-caddy.mk
+include k8s/Makefile
+
+project-setup: project-files-touch project-env-generate compose-setup
+	npm install
+	git clone git://github.com/inishchith/autoenv.git ~/.autoenv || true
+	grep -qxF 'source ~/.autoenv/activate.sh' ~/.bash_profile || echo 'source ~/.autoenv/activate.sh' >> ~/.bash_profile
+	grep -qxF 'export AUTOENV_ENV_FILENAME=.autoenv' ~/.bash_profile || echo 'export AUTOENV_ENV_FILENAME=.autoenv' >> ~/.bash_profile
+	grep -qxF 'export AUTOENV_ENV_LEAVE_FILENAME=.autoenv.leave' ~/.bash_profile || echo 'export AUTOENV_ENV_LEAVE_FILENAME=.autoenv.leave' >> ~/.bash_profile
+	grep -qxF 'export AUTOENV_ENABLE_LEAVE=true' ~/.bash_profile || echo 'export AUTOENV_ENABLE_LEAVE=true' >> ~/.bash_profile
+	export AUTOENV_ENV_FILENAME=.autoenv
+	mkdir .kube
+
+cluster-setup:
+	doctl auth init
+	doctl kubernetes cluster kubeconfig save hexlet-basics-3
+	kubectx do-fra1-hexlet-basics-3
+
+project-files-touch:
+	mkdir -p tmp
+	if [ ! -f tmp/ansible-vault-password ]; then echo 'jopa' > tmp/ansible-vault-password; fi;
+
+project-env-generate:
+	docker run --rm -e RUNNER_PLAYBOOK=ansible/development.yml \
+		-v $(CURDIR)/ansible/development:/runner/inventory \
+		-v $(CURDIR):/runner/project \
+		ansible/ansible-runner
+
+terraform-vars-generate:
+	docker run --rm -e RUNNER_PLAYBOOK=ansible/terraform.yml \
+		-v $(CURDIR)/ansible/production:/runner/inventory \
+		-v $(CURDIR):/runner/project \
+		ansible/ansible-runner
+
+ansible-vaults-edit:
+	# docker run -it -v $(CURDIR):/web -w /web ansible ansible-vault edit ansible/production/group_vars/all/vault.yml --vault-password-file=tmp/ansible-vault-password
+	docker run -it --rm \
+		-v $(CURDIR):/runner/project \
+		ansible/ansible-runner ansible-vault edit project/ansible/production/group_vars/all/vault.yml
+tag:
+	git tag $(TAG) && git push --tags
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+---------
+REDIS CMD
+---------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+with systemctl
+--------------
+
+$ sudo systemctl start redis-server.service                                   --- to start Redis server
+$ sudo systemctl status redis-server.service                                  --- to get status of Redis server
+$ sudo systemctl stop redis-server.service                                    --- to stop Redis server
+$ sudo systemctl restart redis-server.service                                 --- to apply the changes of config file (sudo nano /etc/redis/redis.conf)
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+with service
+------------
+
+$ sudo service redis-server start                                             --- to start Redis server
+$ sudo service redis-server status                                            --- to get status
+$ sudo service redis-server stop                                              --- to stop Redis server
+$ sudo service redis-server restart                                           --- to apply the changes of config file (sudo nano /etc/redis/redis.conf)
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------

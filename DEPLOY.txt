@@ -1,0 +1,41 @@
+Heroku:
+
+heroku run rails console
+
+heroku login - создании своей учетной записи Heroku
+
+gem 'sqlite3', group: :development - добавить PG камень для вашего проекта рельсы
+gem 'pg', '0.18.1', group: :production
+
+gem 'rails_12factor', group: :production - добавьте драгоценный камень rails_12factor
+
+bundle install - установите драгоценных камней, указанных в Gemfile
+
+production:
+   <<: *default
+   database: db/production.sqlite3 - Базы данных конфигурации/.yml использует адаптер postgresql. Изменить:
+
+to:
+
+production:
+   <<: *default
+   adapter: postgresql
+   database: db/production.sqlite3
+
+git add . - Зафиксируйте свои изменения в git
+git commit -m "Heroku config"
+
+heroku create - В терминале создайте приложение на Heroku
+
+git push heroku master - Подтолкнуть ваш код на Heroku
+
+heroku run rake db:migrate - используете базу данных в своем приложении, перенесите ее, запустив
+
+heroku run rake db:seed - заполнить вашу базу данных данными
+
+heroku apps:info - Получите URL-адрес вашего приложения и посетите его в браузере
+
+heroku domains:add www.yourname.com
+
+host wwww.yourname.com
+

@@ -1,0 +1,5889 @@
+-------
+jQuery
+-------
+
+-------------
+JQUERY SETUP:
+-------------
+
+const login = document.getElementById('login');
+const loginMenu = document.getElementById('loginMenu');
+
+login.addEventListener('click', () => {
+  if(loginMenu.style.display === 'none'){
+    loginMenu.style.display = 'inline';
+  } else {
+    loginMenu.style.display = 'none';
+  }
+});
+
+
+$('#login').click(() => {
+  $('#loginMenu').toggle()
+});
+
+
+------------------------------------------------------------------------------------------------------------
+
+--------------
+Adding jQuery:
+--------------
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+
+<script src='js/main.js'></script> 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+.ready():
+
+.ready() - метод ожидает, пока DOM HTML-страницы не будет готов к манипулированию
+
+$(document).ready(() => {
+
+});
+
+-----------------------------------------------------------------------------------------------------------
+
+-------------------
+Targeting by Class:
+-------------------
+
+$(document).ready(() => {
+
+});
+
+$('.someClass').handlerMethod();
+
+---
+
+$(document).ready(() => {
+  $('.product-photo').show()
+});
+
+
+-----------------------------------------------------------------------------------------------------------
+
+----------------
+Targeting by id:
+----------------
+
+$('#someId').hide();
+
+$(document).ready(() => {
+  $('#nav-dropdown').hide();
+});
+
+
+-----------------------------------------------------------------------------------------------------------
+
+---------------
+jQuery Objects:
+---------------
+
+let $name = $('#id');
+
+const $jQueryObject = $('.someClass');
+
+$(document).ready(() => {
+  let $navDropdown = $('#nav-dropdown');
+});
+
+$(document).ready(() => {
+  let $navDropdown = $('#nav-dropdown').hide();
+});
+
+
+------------------------------------------------------------------------------------------------------------
+
+---------------
+Event Handlers:
+---------------
+
+$('#login').on('click', () => {
+  $loginForm.show();
+})
+
+---
+
+$(document).ready(() => {
+
+  const $menuButton = $('.menu-button');
+  const $navDropdown = $('#nav-dropdown');
+
+  $menuButtom.on('click', () => {
+    $navDropdown.show();
+  })
+
+})
+
+
+-----------------------------------------------------------------------------------------------------------
+
+.ready() - 
+.on() - 
+.hide() - 
+.show() - 
+.fadeIn() -
+.fadeOut() -
+.click() -
+.toggle() -
+
+
+-----------------------------------------------------------------------------------------------------------
+
+$(document).ready(() => {
+  const $menuButton = $('.menu-button');
+  const $navDropdown = $('#nav-dropdown');
+
+  $menuButton.on('click', () => {
+    $navDropdown.show();
+  })
+  
+  $navDropdown.on('mouseleave', () => {
+    $navDropdown.hide();
+  })
+})
+
+
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sole Shoes</title>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+  <link rel='stylesheet' type='text/css' href='css/styles.css'>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class='container'>
+      <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+      <div>
+        <span class='menu-button'>Menu</span>
+        <span class='login-button'>Login</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Nav Menu -->
+  <div class='nav-menu hide' id="nav-dropdown">
+    <div class='container'>
+      <ul>
+        <li>Shoes</li>
+        <li>Women's Shoes</li>
+        <li>Men's Shoes</li>
+        <li>Shoe Accessories</li>
+        <li>Wholesale</li>
+      </ul>
+      <ul>
+        <li>Contact</li>
+        <li>Twitter</li>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>Email</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Login Form -->
+  <div class='login-form'>
+    <div class='container'>
+      <form>
+        <h4>Username</h4>
+        <input class='username' />
+        <h4>Password</h4>
+        <input type='password' />
+        <input class='sign-in-button' type='submit' value='Sign In' />
+      </form>
+    </div>
+  </div>
+
+  <!-- Product Cards -->
+  <div class='container'>
+    <div class='product-card'>
+      <div class='product-photo sole-air-ii'></div>
+      <div class='product-details'>
+        <h4>Sole Air II</h4>
+        <div>
+          <p>$35</p>
+          <div class='more-details-button'>
+            <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+          </div>
+        </div>
+      </div>
+
+      <div class='shoe-details'>
+        <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+        <div class='size-chart'>
+          <h4>Size</h4>
+          <ul class='sizes'>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+          </ul>
+        </div>
+        <div class='buy-now-button disabled'>
+          <h3>Add to cart</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='container'>
+    <div class='product-card'>
+      <div class='product-photo tidal-x'></div>
+      <div class='product-details'>
+        <h4>Tidal X</h4>
+        <div>
+          <p>$40</p>
+          <div class='more-details-button'>
+            <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+          </div>
+        </div>
+      </div>
+
+      <div class='shoe-details'>
+        <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+        <div class='size-chart'>
+          <h4>Size</h4>
+          <ul class='sizes'>
+            <li>6</li>
+            <li>7</li>
+            <li>10</li>
+            <li>12</li>
+            <li>13</li>
+          </ul>
+        </div>
+        <div class='buy-now-button disabled'>
+          <h3>Add to cart</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class='container'>
+    <div class='product-card'>
+      <div class='product-photo dark-sole-original'></div>
+      <div class='product-details'>
+        <h4>Dark Sole Original</h4>
+        <div>
+          <p>$60</p>
+          <div class='more-details-button'>
+            <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+          </div>
+        </div>
+      </div>
+
+      <div class='shoe-details'>
+        <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+        <div class='size-chart'>
+          <h4>Size</h4>
+          <ul class='sizes'>
+            <li>9</li>
+            <li>10</li>
+            <li>10.5</li>
+            <li>11</li>
+          </ul>
+        </div>
+        <div class='buy-now-button disabled'>
+          <h3>Add to cart</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping cart -->
+  <div class='shopping-cart'>
+    <div class='container'>
+      <div class='cart'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+        <h3 class='items-qty'>1</h3>
+      </div>
+      <h3>Checkout</h3>
+    </div>
+  </div>
+
+  <footer>
+    <div class='container'>
+      <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+      <div>Contact Us</div>
+    </div>
+  </footer>
+
+   <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script> 
+
+  <script src='js/main.js'></script> 
+</body>
+
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+      
+
+-----------------------------------------------------------------------------------------------------------
+
+-----------------------
+INTRODUCTION TO JQUERY:
+-----------------------
+
+$('#cart').on('click', () => {
+  $('#cartMenu').show();
+})
+
+$('#cart').on('mouseleave', () => {
+  $('#cartMenu').hide();
+})
+
+$('#account').on('click', () => {
+  $('#accountMenu').show();
+})
+
+$('#account').on('mouseleave', () => {
+  $('#accountMenu').hide();
+})
+
+$('#help').on('click', () => {
+  $('#helpMenu').show();
+})
+
+$('#help').on('mouseleave', () => {
+  $('#helpMenu').hide();
+})
+
+
+---
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  padding: 45px 0;
+  background-color: #0074ff;
+}
+
+.header ul {
+  list-style: none;
+  padding: 0;
+}
+
+.header li {
+  display: inline;
+  line-height: 30px;
+}
+
+.header li + li {
+  margin-left: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #fff;
+}
+
+.header h3 {
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  margin: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.header .dropdown {
+  position: relative;
+}
+
+.header .dropdown-menu {
+  position: absolute;
+  top: 20px;
+  border-radius: 0;
+}
+
+.header .dropdown-menu li {
+  display: block;
+  margin: 0;
+  padding: 3px 10px;
+}
+
+/* Main */
+.main {
+  background: url('https://s3.amazonaws.com/codecademy-content/projects/2/madison-square-market/s1.jpg') no-repeat center center;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+}
+
+/* Footer */
+.footer {
+  background-color: #0074ff;
+  padding: 20px 0;
+  height: 200px;
+}
+
+
+@media (max-width: 1024px) { 
+  .header h1 { 
+    width: 100%; 
+    text-align: center; 
+  } 
+
+  .pull-right { 
+    float: none !important; 
+    margin: 20px auto 0; 
+    width: 225px;
+  }
+}
+
+
+---
+
+<!doctype html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='styles.css'/>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>madison square market</h1>
+          </div>
+          <div class="pull-right">
+
+            <ul>
+
+              <li class="dropdown" id="cart">
+                <h3>cart &#x25BE;</h3>
+                <ul class="dropdown-menu" id="cartMenu">
+                  <li>View Cart</li>
+                  <li>Saved Carts</li>
+                </ul>
+              </li>
+
+              <li class="dropdown"  id="account">
+                <h3>account &#x25BE;</h3>
+                <ul class="dropdown-menu" id="accountMenu">
+                  <li>View Account</li>
+                  <li>Check Order Status</li>
+                  <li>Sign in</li>
+                </ul>
+              </li>
+
+              <li class="dropdown"  id="help">
+                <h3>help &#x25BE;</h3>
+                <ul class="dropdown-menu" id="helpMenu">
+                  <li>FAQs</li>
+                  <li>Return Policy</li>
+                  <li>Shipping Info</li>
+                </ul>
+              </li> 
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main"></div>
+    <div class="footer"></div>
+
+    <script src="https://s3.amazonaws.com/codecademy-content/projects/jquery.min.js"></script>
+    <script src='main.js'></script>
+  </body>
+</html>
+
+
+-----------------------------------------------------------------------------------------------------------
+
+----------------------
+LEARN JQUERY: EFFECTS:
+----------------------
+
+.hide():
+
+$(document).ready(() => {
+  $('.hide-button').on('click', () => {
+    $('.first-image').hide();
+  })
+});
+
+---
+
+console.log = function() {};
+const assert = require('chai').assert;
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('js/main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    // Match for method call
+    let structureMethod = function() {
+      $(document).ready(() => {
+        $($buttonName).on($click, () => {
+          $($imageName).hide();
+        });
+      });
+    };
+    let varCallbacks = {
+      '$buttonName, $click, $imageName ': function(buttonName, click, imageName) {
+        if (buttonName.value !== '.hide-button') {
+          return {failure: 'Target \'.hide-button\'.'};
+        }
+        else if (click.value !== 'click') {
+          return {failure: 'Make the first argument of the on method \'click\''};
+        }
+        else if (imageName.value !== '.first-image') {
+          return {failure: 'Target the image with \'.first-image\''};
+        }
+        return true;
+      }
+    };
+    
+    let isMatch = Structured.match(code, structureMethod, {varCallbacks: varCallbacks});    
+    failureMessage = varCallbacks.failure || 'Call .hide() on the targeted image.';
+    assert.isOk(isMatch, failureMessage);
+    
+  });
+});
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  </head>
+  
+  <body>
+    <table align='center'>
+      <tr>
+        <th class='header-small'>
+          <div class='header-text'>Buttons</div>
+        </th>
+        <th class='header-big'>
+          <div class='image-text'>Images</div>
+        </th>
+      </tr>
+      
+      <tr>
+        <th class='button-col'>
+          <button class="hide-button">
+            <div class = 'button-text'>HIDE</div>
+          </button>
+        </th>
+        <th rowspan = 3 class = 'img-col'>
+          <img src = "https://s3.amazonaws.com/codecademy-content/courses/jquery/effects/veggies.jpg" class ="first-image">
+        </th> 
+      </tr>
+
+    </table>
+      
+      <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src='js/main.js'></script>
+  </body>
+</html>
+
+
+---
+
+body{
+  background-color: #86bdfd;
+}
+
+table{
+  width: 100%;
+  border: 1px #0b2748 solid;
+  border-spacing:0;
+  
+}
+
+tr {
+  width: 100%;
+}
+
+th {
+  border: 1px #0b2748 solid;
+}
+
+img{
+  width: 240px; 
+  height: 160px;
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  width: 154px;
+  height: 37px;
+  border-radius: 2.2px;
+  background-color: #0b2748;
+  cursor: pointer;
+}
+
+.button-col {
+
+  height: 69px;
+}
+
+.img-col{
+
+  height: 207px;
+}
+
+.button-text {
+  
+  height: 9.5px;
+  font-family: Source Sans Pro;
+  font-size: 16.8px;
+  font-weight: 600;
+  line-height: 0.57;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #4a90e2;
+}
+
+.header-small{
+  height: 69px;
+  background-color: #ffffff;
+}
+
+.header-big{
+  background-color: #ffffff;
+}
+
+.header-text {
+  width: 100%;
+  height: 17px;
+  font-family: Source Sans Pro;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 0.61;
+  letter-spacing: 1.3px;
+  text-align: center;
+  color: #0b2748;
+}
+
+.image-text {
+  width: 100%;
+  height: 17px;
+  font-family: Source Sans Pro;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 0.61;
+  letter-spacing: 1.3px;
+  text-align: center;
+  color: #0b2748;
+}
+
+
+------------------------------------------------------------------------------------------------------------
+
+--------
+.show():
+--------
+
+$(document).ready(() => {
+  $('.hide-button').on('click', () => {
+    $('.first-image').hide();
+  });
+  
+  $('.show-button').on('click', () => {
+    $('.first-image').show();
+  });
+});
+
+
+-----------------------------------------------------------------------------------------------------------
+
+----------
+.toggle():
+----------
+
+$(document).ready(() => {
+  $('.hide-button').on('click', () => {
+    $('.first-image').hide();
+  });
+  
+  $('.show-button').on('click', () => {
+    $('.first-image').show();
+  });
+  
+  $('.toggle-button').on('click', () => {
+    $('.first-image').toggle();
+  });
+});
+
+
+-----------------------------------------------------------------------------------------------------------
+
+-------
+fading:
+-------
+
+$(document).ready(() => {
+  $('.hide-button').on('click', () => {
+    $('.first-image').hide();
+  });
+  
+  $('.show-button').on('click', () => {
+    $('.first-image').show();
+  });
+  
+  $('.toggle-button').on('click', () => {
+    $('.first-image').toggle();
+  });
+  
+  $('.fade-out-button').on('click', () => {
+    $('.fade-image').fadeOut(500);
+  });
+  
+  $('.fade-in-button').on('click', () => {
+    $('.fade-image').fadeIn(4000);
+  });
+});
+
+
+-----------------------------------------------------------------------------------------------------------
+
+--------------
+.fadeToggle():
+--------------
+
+$('div').fadeToggle(1000);
+
+---
+
+$(document).ready(() => {
+  $('.hide-button').on('click', () => {
+    $('.first-image').hide();
+  });
+  
+  $('.show-button').on('click', () => {
+    $('.first-image').show();
+  });
+  
+  $('.toggle-button').on('click', () => {
+    $('.first-image').toggle();
+  });
+  
+  $('.fade-out-button').on('click', () => {
+    $('.fade-image').fadeOut(500);
+  });
+  
+  $('.fade-in-button').on('click', () => {
+    $('.fade-image').fadeIn(4000);
+  });
+  
+  $('.fade-toggle-button').on('click', () => {
+    $('.fade-image').fadeToggle('fast');
+  });
+});
+
+
+-----------------------------------------------------------------------------------------------------------
+
+--------
+Sliding:
+--------
+
+$('.menu-button').on('click', () => {
+  $('.menu-content').slideDown('slow');
+});
+
+---
+
+$(document).ready(() => {
+  $('.hide-button').on('click', () => {
+    $('.first-image').hide();
+  });
+  
+  $('.show-button').on('click', () => {
+    $('.first-image').show();
+  });
+  
+  $('.toggle-button').on('click', () => {
+    $('.first-image').toggle();
+  });
+  
+  $('.fade-out-button').on('click', () => {
+    $('.fade-image').fadeOut(500);
+  });
+  
+  $('.fade-in-button').on('click', () => {
+    $('.fade-image').fadeIn(4000);
+  });
+  
+  $('.fade-toggle-button').on('click', () => {
+    $('.fade-image').fadeToggle();
+  });
+  
+  $('.up-button').on('click', () => {
+    $('.slide-image').slideUp(100);
+  });
+  
+  $('.down-button').on('click', () => {
+    $('.slide-image').slideDown('slow');
+  });
+  
+  $('.slide-toggle-button').on('click', () => {
+    $('.slide-image').slideToggle(400);
+  });
+});
+
+
+-----------------------------------------------------------------------------------------------------------
+
+мгновенно скрывают или показывают элементы на веб-странице
+.hide()
+.show()
+.toggle()
+
+заставляют элементы исчезать или появляться в течение определенного периода времени
+.fadeOut()
+.fadeIn()
+.fadeToggle()
+
+заставляют элементы скользить вверх или вниз на место в течение определенного периода времени
+.slideUp()
+.slideDown()
+.slideToggle()
+
+
+-----------------------------------------------------------------------------------------------------------
+
+$(document).ready(() =>{
+  $('.hint-box').on('click', () => {
+    $('.hint').slideToggle(400);
+  })
+
+  $('.wrong-answer-one').on('click', () => {
+    $('.wrong-text-one').fadeOut('slow');
+    $('.wrong-text-one').show('frown');
+  })
+
+  $('.wrong-answer-two').on('click', () => {
+    $('.wrong-text-two').fadeOut('slow');
+    $('.wrong-text-two').show('frown');
+  })
+
+  $('.wrong-answer-three').on('click', () => {
+    $('.wrong-text-three').fadeOut('slow');
+    $('.wrong-text-three').show('frown');
+  })
+
+  $('.correct-answer').on('click', () => {
+    $('correct-text-answer').show('smiley');
+  })
+});
+
+
+---
+
+console.log = function() {};
+const assert = require('chai').assert;
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('js/main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    // Match for method call
+    let structureMethod= function() {
+      $('.first-image').hide();
+    };
+    let isMatchSelector = Structured.match(code, structureMethod);
+    assert.isOk(isMatchSelector, 'Append .hide() to your selected image.');
+  });
+});
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class = 'card'>
+      <div class = "question">
+        <div class = 'question-text'>What is the capital of New York?</div>
+      </div>
+      <div class = 'hint-box'>
+        <div class = 'hide-hint-text'>SHOW/HIDE HINT</div>
+      </div>
+      <div class = 'hint'> 
+        <div class = 'hide-hint-text'>The capital is not the largest city!</div>
+      </div>
+      <div class = 'wrong-answer-one answer'>
+        <div class= 'wrong-text-one answer-text'>New York City</div>
+      </div>
+      <div class = 'wrong-answer-two answer'>
+        <div class= 'wrong-text-two answer-text'>Buffalo</div>
+        </div>
+      <div class = 'wrong-answer-three answer'>
+        <div class= 'wrong-text-three answer-text'>Syracuse</div>
+      </div>
+      <div class = 'correct-answer answer'>
+      	<div class = 'correct-answer-text answer-text'>Albany</div>
+    	</div>
+        
+      <div class = 'result'>
+        <div class = 'smiley'> <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/effects/smile_icon.svg' /> </div>
+        <div class = 'frown'> <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/effects/frown_icon.svg' />  </div>
+      </div>
+    </div>
+
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src='js/main.js'></script>   
+  </body>
+</html>
+
+
+---
+
+body {
+	display:flex;
+  justify-content:center;
+  background-color: #86bdfd;
+}
+
+.card{
+  width: 620px;
+}
+
+.question-text {
+  font-family: Source Sans Pro;
+  font-size: 42px;
+  line-height: 1.29;
+  letter-spacing: 0.4px;
+  color: #0b2748;
+}
+
+.question{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  background-color: #86bdfd;
+}
+
+.hint-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: #0b2748;
+  cursor: pointer;
+}
+
+.hint{
+  box-sizing: border-box;
+  width:100%;
+  padding: 30px 0;
+  background-color: #0b2748;
+  text-align: center;
+  display: none;
+  
+  
+}
+
+.answer{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  border-radius: 2.2px;
+  cursor: pointer;
+  
+}
+
+.wrong-answer-one{
+  background-color: #ffffff;
+}
+
+.wrong-answer-two {
+  background-color: #edf5ff;
+}
+
+.wrong-answer-three{
+
+  background-color: #ffffff;
+}
+
+.correct-answer{
+  background-color: #edf5ff;
+}
+
+.result{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 160px;
+  border-radius: 2.2px;
+  background-color: #0b2748;
+}
+.smiley{
+	display: none;
+}
+
+.frown{
+  display: none;
+}
+
+.hide-hint-text{
+  font-family: Source Sans Pro;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 0.48;
+  letter-spacing: 0.4px;
+  color: #4a90e2;
+}
+
+.answer-text {
+ 
+  font-family: Source Sans Pro;
+  font-size: 42px;
+  line-height: 1.29;
+  letter-spacing: 0.4px;
+  text-align: left;
+  color: #0b2748;
+  padding-left: 55px;
+}
+
+
+-----------------------------------------------------------------------------------------------------------
+
+----------------
+On 'mouseenter':
+----------------
+
+mouseenter - событие запускает функцию обратного вызова, когда пользователь 
+входит в область, занимаемую целевым элементом
+
+$('.example-class').on('mouseenter',  () => {
+    
+});
+
+
+---
+
+$(document).ready(() => {
+  $('.login-button').on('click', () => {
+    $('.login-form').show();
+  });
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show();
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+----------------
+On 'mouseleave':
+----------------
+
+mouseleave - прослушиватель событий может определить, когда мышь пользователя 
+покидает область, занимаемую элементом
+
+$('.example-class').on('mouseleave', function() {
+    
+});
+
+
+---
+
+$(document).ready(() => {
+  $('.login-button').on('click', () => {
+    $('.login-form').show();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show()
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide()
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+----------------
+Chaining Events:
+----------------
+
+$('.example-class').on('mouseenter', () => {
+  $('.example-class-one').show();
+}).on('mouseleave', () => {
+  $('.example-class-one').hide();
+});
+
+
+---
+
+$(document).ready(() => {
+  $('.login-button').on('click', () => {
+    $('.login-form').show();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show()
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+  })
+  
+  
+  $('.product-photo').on('mouseenter', () => {
+		$('.product-photo').addClass('photo-active')
+  }).on('mouseleave', () => {
+    $('.product-photo').removeClass('photo-active')
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+--------------
+currentTarget:
+--------------
+
+$('.example-class').on('mouseenter', event => {
+  $(event.currentTarget).addClass('photo-active');
+});
+
+
+---
+
+$(document).ready(() => {
+  $('.login-button').on('click', () => {
+    $('.login-form').show();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show()
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+  })
+  
+  $('.product-photo').on('mouseenter', (event) => {
+    $(event.currentTarget).addClass('photo-active')
+  }).on('mouseleave', event => {
+    $(event.currentTarget).removeClass('photo-active')
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+$(document).ready(() => {
+  
+  $('.login-button').on('click', () => {
+    $('.login-form').show();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show()
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+  })
+  
+  $('.product-photo').on('mouseenter', event => {
+    $(event.currentTarget).addClass('photo-active')
+  }).on('mouseleave', event => {
+    $(event.currentTarget).removeClass('photo-active')
+  })
+}); 
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sole Shoes</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>
+          <span class='menu-button'>Menu</span>
+          <span class='login-button'>Login</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Nav Menu -->
+    <div class='nav-menu hide'>
+      <div class='container'>
+        <ul>
+          <li>Shoes</li>
+          <li>Women's Shoes</li>
+          <li>Men's Shoes</li>
+          <li>Shoe Accessories</li>
+          <li>Wholesale</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class='login-form'>
+      <div class='container'>
+        <form>
+          <h4>Username</h4>
+          <input class='username' />
+          <h4>Password</h4>
+          <input type='password' />
+          <input class='sign-in-button' type='submit' value='Sign In' />
+        </form>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo sole-air-ii'></div>
+        <div class='product-details'>
+          <h4>Sole Air II</h4>
+          <div>
+            <p>$35</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo tidal-x'></div>
+        <div class='product-details'>
+          <h4>Tidal X</h4>
+          <div>
+            <p>$40</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>6</li>
+              <li>7</li>
+              <li>10</li>
+              <li>12</li>
+              <li>13</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo dark-sole-original'></div>
+        <div class='product-details'>
+          <h4>Dark Sole Original</h4>
+          <div>
+            <p>$60</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>9</li>
+              <li>10</li>
+              <li>10.5</li>
+              <li>11</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart -->
+    <div class='shopping-cart'>
+      <div class='container'>
+        <div class='cart'>
+          <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+          <h3 class='items-qty'>1</h3>
+        </div>
+        <h3>Checkout</h3>
+      </div>
+    </div>
+
+    <footer>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>Contact Us</div>
+      </div>
+    </footer>
+
+     <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script> 
+
+    <script src='js/main.js'></script> 
+  </body>
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+      
+
+---
+
+console.log = function() {};
+const assert = require('chai').assert;
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('js/main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    let structure = function() {
+      on('click', () => {
+        $('.nav-menu').show();
+      })  
+    };
+
+
+    let isMatch = Structured.match(code, structure);
+    assert.isOk(isMatch, 'Did you change \'____\' to \'click\'?');
+  });
+});
+
+
+----------------------------------------------------------------------------------------------------------
+
+$(document).ready(() => {
+  $('.menu').on('mouseenter', () => {
+    $('.nav-menu').show();
+  });
+
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+  });
+
+  $('.btn').on('mouseenter', (event) => {
+    $(event.currentTarget).addClass('btn-hover')
+  }).on('mouseleave', (event) => {
+    $(event.currentTarget).removeClass('btn-hover');
+  });
+
+  $('.postText').on('keyup', (event) => {
+    let post = $(event.currentTarget).val();
+    let remaining = 140 - post.length;
+
+    if (remaining <= 0) {
+      $('.wordcount').addClass('red');
+    } else {
+      $('.wordcount').removeClass('red');
+    }
+
+    $('.characters').html(remaining);
+  });
+
+  $('.postText').focus();
+}); 
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>feedster</title>
+  	<link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+    <link href="styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-2">
+            <h1>feedster</h1>
+          </div>
+          <div class="col-xs-7">
+          </div>
+          
+          <div class="col-xs-2">
+            <h1 class="menu">menu</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+
+    <div class='nav-menu'>
+      <div class='container-nav'>
+        <ul>
+          <li>Bang Bang</li>
+          <li>Mexican-Chinese</li>
+          <li>Indo-Scandinavian</li>
+          <li>Polish-Korean</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+    </div>
+      
+    <form method= "POST" class="newPost">
+      <div class="container">
+        <div class="post">
+          <img class="avatar" src="https://s3.amazonaws.com/codecademy-content/courses/jquery+jfiddle+test/feedster/profile-purple.svg">
+          <h3 class='name'>YOUR NAME HERE</h3>
+          <textarea class="postText" placeholder="What's on your mind?"></textarea>
+          <p class="wordcount"><span class='characters'>140</span> characters remaining</p>
+          <div class="button-holder">
+            <button type="submit" class="btn-post">POST</button>
+            <button type="submit" class="btn-post">WORD COUNT</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    
+    <div class="posts">
+      <div class="container">
+        <div class="post">
+          <img class="avatar" src="https://s3.amazonaws.com/codecademy-content/courses/jquery+jfiddle+test/feedster/profile-teal.svg">
+          <h3>Ivory Breath</h3>
+          <p>Buffalo bulgogi, are you kidding me!?! Do yourself a favor and head to this restaurant.</p>
+          <button class="btn">+1</button>
+        </div>
+
+        <div class="post">
+          <img class="avatar" src="https://s3.amazonaws.com/codecademy-content/courses/jquery+jfiddle+test/feedster/profile-yellow.svg">
+          <h3>Bacon West</h3>
+          <p>Tacos, sausage, fundido, saurkraut and more! 10/10 would recommend.</p>
+          <button class="btn">+1</button>
+        </div>
+        
+      </div>
+    </div>
+   
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script> 
+
+    <script src='main.js'></script> 
+  </body>
+
+</html>
+
+
+---
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: CornflowerBlue;
+}
+
+.container {
+  max-width: 700px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #19314D;
+}
+
+.header h1 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 32px;
+  font-weight: 200;
+  color: #fff;
+  margin: 0;
+  padding: 7px 0;
+}
+
+.nav-menu {
+  background-color: #19314D;
+  color: #EFEFEF;
+  display: none;
+  justify-content: flex-start;
+}
+
+.nav-menu .container-nav {
+  padding: 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ }
+
+.nav-menu .container-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu .container-nav ul li {
+  padding-top: .25em; 
+}
+
+.nav-menu .container-nav ul li:first-child {
+  text-transform: uppercase;
+  color: CornflowerBlue;
+  letter-spacing: 0.05em;
+}
+
+
+
+.post {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 20px 0;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+form .post {
+  min-height: 186px;
+}
+
+.post .avatar {
+  margin: 0 10px 10px 0;
+}
+
+.post h3 {
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 0;
+  display: inline;
+}
+
+.post p {
+  font-size: 14px;
+}
+
+.post p + img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.btn {
+  color: #00CD73;
+  border-color: #00CD73;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+.btn-hover {
+  color: white;
+  border-color: #00CD73;
+  background-color: #00CD73;
+  font-weight: 700;
+}
+
+.btn-post{
+  color: CornflowerBlue;
+  border-color: CornflowerBlue;
+  border-radius: 4px;
+  border-width: 1px;
+  text-decoration: none;
+  background-color: transparent;
+  font-weight: 700;
+  padding: 5px;
+  float: right;
+  margin-right: 20px;
+}
+
+.btn-post:hover {
+  color: white;
+  border-color: CornflowerBlue;
+  background-color: CornflowerBlue;
+  font-weight: 700;
+}
+
+.postText {
+  width: 100%;
+  display: block;
+  word-wrap: break-word;
+  height: 60px;
+  resize: none;
+}
+
+textarea{
+  background-color: #F2F2F2;
+  border: none;
+  box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  line-height: 20px;
+  font-size: 14px;
+  padding: 10px;  
+}
+
+.wordcount {
+  color: #9B9B9B;
+  font-size: 9px;
+  line-height: 24px;
+  opacity: .8;
+}
+
+.red {
+  color: red;
+}
+
+
+-----------------------------------------------------------------------------------------------------------
+
+--------------
+STYLE METHODS:
+--------------
+
+-------------
+CSS & jQuery:
+-------------
+
+.css() - изменить CSS
+
+$('.example-class').css('color', '#FFFFFF');
+
+---
+
+$(document).ready(() => {
+ 
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show();
+    $('.menu-button').css('color', '#C3FF00')
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+    $('.menu-button').css('color', '#EFEFEF')
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+-------
+CSS II:
+-------
+
+{
+  color: '#FFFFFF',
+  backgroundColor: '#000000',
+  fontSize: '20px'
+}
+
+---
+
+$('.example-class').css({
+  color: '#FFFFFF',
+  backgroundColor: '#000000',
+  fontSize: '20px'
+})
+
+
+---
+
+$(document).ready(() => {
+ 
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show();
+    $('.menu-button').css({
+     color: '#C3FF00',
+     backgroundColor: '#535353'
+    })
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+    $('.menu-button').css({
+      color: '#EFEFEF',
+      backgroundColor: '#303030'
+    })
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+-----------
+.animate():
+-----------
+
+$('.example-class').animate({
+  height: '100px',
+  width: '100px',
+  borderWidth: '10px'
+}, 500);
+
+
+---
+
+$(document).ready(() => {
+ 
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show();
+    $('.menu-button').css({
+     color: '#C3FF00',
+     backgroundColor: '#535353'
+    })
+
+    $('.menu-button').animate({
+      fontSize: '24px'
+    }, 200)
+  })
+
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+    $('.menu-button').css({
+      color: '#EFEFEF',
+      backgroundColor: '#303030'
+    })
+
+    $('.menu-button').animate({
+      fontSize: '18px'
+    }, 200)
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+------------
+.addClass():
+------------
+
+$('.example-class').addClass('active');
+
+
+---
+
+$('.example-class').on('click', function() {
+  $('.example-class').addClass('button-active');
+});
+
+
+---
+
+$(document).ready(() => {
+ 
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show();
+    $('.menu-button').addClass('button-active')
+    
+    $('.menu-button').animate({
+      fontSize: '24px'
+    }, 200)
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+    $('.menu-button').css({
+      color: '#EFEFEF',
+      backgroundColor: '#303030'
+    })
+    
+    $('.menu-button').animate({
+      fontSize: '18px'
+    }, 200)
+  })
+}); 
+
+
+-----------------------------------------------------------------------------------------------------------
+
+---------------
+.removeClass():
+---------------
+
+$('.example-class').removeClass('active');
+
+
+---
+
+$(document).ready(() => {
+ 
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show();
+    $('.menu-button').addClass('button-active');
+    $('.nav-menu').removeClass('hide');
+    
+    $('.menu-button').animate({
+      fontSize: '24px'
+    }, 200)
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.menu-button').removeClass('button-active')
+    
+    $('.menu-button').animate({
+      fontSize: '18px'
+    }, 200)
+  })
+}); 
+
+
+----------------------------------------------------------------------------------------------------------
+
+---------------
+.toggleClass():
+---------------
+
+$('.example-class').toggleClass('active');
+
+
+---
+
+$(document).ready(() => {
+  $('.login-button').on('click', () => {
+    $('.login-form').show();
+  });
+  
+  $('.menu-button').on('click', () => {
+    $('.nav-menu').toggleClass('hide')
+    $('.menu-button').toggleClass('button-active')
+  })
+}); 
+
+
+----------------------------------------------------------------------------------------------------------
+
+.css() - метод может изменять свойства стиля элемента
+.css() - метод может принимать сразу несколько стилей, если вы передадите ему объект JavaScript в качестве аргумента
+.animate() - метод может изменять определенные свойства стиля в течение определенного периода времени
+.addClass() - добавит CSS-класс к элементу, и тот .метод removeClass () удалит класс CSS
+.toggleClass() - метод будет переключать класс на включение или выключение элемента
+
+
+-----------------------------------------------------------------------------------------------------------
+
+$(document).ready(() => {
+ 
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+  });
+  
+  $('.menu-button').on('mouseenter', () => {
+    $('.nav-menu').show();
+    $('.menu-button').addClass('button-active');
+    $('.nav-menu').removeClass('hide');
+    
+    $('.menu-button').animate({
+      fontSize: '24px'
+    }, 200)
+  })
+  
+  $('.nav-menu').on('mouseleave', () => {
+    $('.menu-button').removeClass('button-active')
+    
+    $('.menu-button').animate({
+      fontSize: '18px'
+    }, 200)
+  })
+}); 
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sole Shoes</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>
+          <span class='menu-button'>Menu</span>
+          <span class='login-button'>Login</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Nav Menu -->
+    <div class='nav-menu hide'>
+      <div class='container'>
+        <ul>
+          <li>Shoes</li>
+          <li>Women's Shoes</li>
+          <li>Men's Shoes</li>
+          <li>Shoe Accessories</li>
+          <li>Wholesale</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class='login-form'>
+      <div class='container'>
+        <form>
+          <h4>Username</h4>
+          <input class='username' />
+          <h4>Password</h4>
+          <input type='password' />
+          <input class='sign-in-button' type='submit' value='Sign In' />
+        </form>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo sole-air-ii'></div>
+        <div class='product-details'>
+          <h4>Sole Air II</h4>
+          <div>
+            <p>$35</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo tidal-x'></div>
+        <div class='product-details'>
+          <h4>Tidal X</h4>
+          <div>
+            <p>$40</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>6</li>
+              <li>7</li>
+              <li>10</li>
+              <li>12</li>
+              <li>13</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo dark-sole-original'></div>
+        <div class='product-details'>
+          <h4>Dark Sole Original</h4>
+          <div>
+            <p>$60</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>9</li>
+              <li>10</li>
+              <li>10.5</li>
+              <li>11</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart -->
+    <div class='shopping-cart'>
+      <div class='container'>
+        <div class='cart'>
+          <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+          <h3 class='items-qty'>1</h3>
+        </div>
+        <h3>Checkout</h3>
+      </div>
+    </div>
+
+    <footer>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>Contact Us</div>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script> 
+
+    <script src='js/main.js'></script> 
+  </body>
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+  overflow: hidden;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+
+---
+
+console.log = function() {};
+const assert = require('chai').assert;
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('js/main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    let structure = function() {
+      
+    $('.menu-button').on('mouseenter', () => {
+      $('.nav-menu').removeClass('hide');
+    })
+    };
+
+    let isMatch = Structured.match(code, structure);
+    let failureMessage = 'Did you use the removeClass method to remove hide from the .nav-menu element?';
+    assert.isOk(isMatch, failureMessage);
+  });
+});
+
+
+----------------------------------------------------------------------------------------------------------
+
+$(document).ready(() => {
+  $('#text').on('keyup', (event) => {
+    $('.preview').html($(even.currentTarget).val());
+  });
+
+  $('#font').on('change', (event) => {
+    $('.preview').css({
+      fontFamily: $(event.currentTarget).val()
+    })
+  });
+
+  $('#weight').on('change', (event) => {
+    $('.preview').css({
+      fontWeight: $(event.currentTarget).val()
+    })
+  });
+
+  $('#SIZE').on('keyup', (event) => {
+    let fontSize = $(event.currentTarget).val() + 'px';
+    $('.preview').css({
+      fontSize: fontSize
+    })
+  });
+})
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Typo | Test-drive your text</title>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class = "outer-container">
+      <header>
+        <h1>TYP</h1>
+        <h2>Test-drive your text</h2>
+      </header>
+      <div class="formHolder">
+        <form method="POST">
+          <div class="third">
+            Font Family <select name="font" id="font">
+              <option value="helvetica" id="helvetica">Helvetica</option>
+              <option value="times" id="times">Times</option>
+              <option value="impact" id="impact">Impact</option>
+              <option value="courier" id="courier">Courier</option>
+              <option value="verdana" id="verdana">Verdana</option>
+            </select>
+          </div>
+          <div class="third">
+            Font Size  
+            <br>
+            <input type="text" placeholder="12" id="size">
+          </div>
+          <div class="third">
+            Font Weight  <select name="weight" id="weight">
+             <option value="normal">Normal</option>
+             <option value="bold">Bold</option>
+             <option value="bolder">Bolder</option>
+             <option value="lighter">lighter</option>
+           </select>
+          </div>
+        </form>
+      </div>
+      <div class="preview">Sample Font</div>
+      <textarea name="text" placeholder="Type something here and see what happens..." id="text" cols="30" rows="10"></textarea>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
+
+
+---
+
+body {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/images/typetile.png");
+  background-repeat: repeat;
+  margin: 0;
+  padding: 0;
+}
+
+.outer-container{
+  width: 100%;
+}
+
+h1 {
+  color: #FF6D04;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 10px;
+  line-height: 1rem;
+  text-align: center;
+} 
+
+h2 {
+  color: #665C3D;
+  font-size: .9rem;
+  font-weight: 100;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  text-align: center;
+} 
+
+header {
+  text-align: center;
+  font-family: "verdana";
+}
+
+.preview {
+  align: center;
+  background: white;
+  font-family: Helvetica;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 auto 0 auto;
+
+  min-height: 150px;
+  padding: 30;
+  word-wrap: break-word;
+}
+
+textarea {
+  border-color: #E6B000;
+  border-radius: 4px;
+  border-style: solid;
+  border-width:1px;
+  display: block;
+  font-family: "Helvetica-Light", "Helvetica", "Arial", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 30px auto 30px auto;
+  padding: 20px;
+}
+
+.formHolder {
+  background-color: #665C3D;
+  border-radius: 4px 4px 0px 0px;
+  color: #FF6D04;
+  font-family: "verdana";
+  font-size: 0.75rem;
+  margin: 40px auto 0 auto;
+  padding: 20px;
+  text-transform: uppercase;
+  height: 50px;
+}
+
+.form {
+  display: inline;
+}
+
+.third {
+  height: 100%;
+  float: right;
+  text-align: center;
+}
+
+input {
+  display: inline;
+}
+
+#fonts {
+  margin-left: 4px;
+}
+
+#weight {
+}
+
+
+-----------------------------------------------------------------------------------------------------------
+
+-------------------
+TRAVERSING THE DOM:
+-------------------
+
+---------
+Children:
+---------
+
+.children() - 
+
+<div class='parent' id='holder'>
+  <div>Child <span>1</span></div>
+  <div>Child <span>2</span></div>
+  <div>Child <span>3</span></div>
+</div>
+
+const $kids = $('#holder').children();
+$kids.on('click', event => {
+  $(event.currentTarget).css('border', '1px solid black');
+});
+
+
+---
+
+$(document).ready(() => {
+  $('.shoe-details').show();
+  $('.more-details-button').on('click', event => {   
+  });  
+  
+  $('.shoe-details li').on('click', event => {
+    $(event.currentTarget).addClass('active');
+    $(event.currentTarget).siblings().removeClass('active')
+    $('.shoe-details').children().removeClass('disabled')
+  });
+  
+  
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+    $('.login-button').toggleClass('button-active');
+  });
+
+  $('.product-photo').on('mouseenter', () => {
+    $(this).addClass('photo-active');
+  }).on('mouseleave', function() {
+    $(this).removeClass('photo-active');
+  });
+
+  $('.menu-button').on('click', () => {
+    $('.menu-button').toggleClass('button-active');
+    $('.nav-menu').toggleClass('hide');
+  });
+})
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sole Shoes</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>
+          <span class='menu-button'>Menu</span>
+          <span class='login-button'>Login</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Nav Menu -->
+    <div class='nav-menu hide'>
+      <div class='container'>
+        <ul>
+          <li>Shoes</li>
+          <li>Women's Shoes</li>
+          <li>Men's Shoes</li>
+          <li>Shoe Accessories</li>
+          <li>Wholesale</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class='login-form'>
+      <div class='container'>
+        <form>
+          <h4>Username</h4>
+          <input class='username' />
+          <h4>Password</h4>
+          <input type='password' />
+          <input class='sign-in-button' type='submit' value='Sign In' />
+        </form>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo sole-air-ii'></div>
+        <div class='product-details'>
+          <h4>Sole Air II</h4>
+          <div>
+            <p>$35</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo tidal-x'></div>
+        <div class='product-details'>
+          <h4>Tidal X</h4>
+          <div>
+            <p>$40</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>6</li>
+              <li>7</li>
+              <li>10</li>
+              <li>12</li>
+              <li>13</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo dark-sole-original'></div>
+        <div class='product-details'>
+          <h4>Dark Sole Original</h4>
+          <div>
+            <p>$60</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>9</li>
+              <li>10</li>
+              <li>10.5</li>
+              <li>11</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart -->
+    <div class='shopping-cart'>
+      <div class='container'>
+        <div class='cart'>
+          <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+          <h3 class='items-qty'>1</h3>
+        </div>
+        <h3>Checkout</h3>
+      </div>
+    </div>
+
+    <footer>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>Contact Us</div>
+      </div>
+    </footer>
+
+     <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+
+    <script src='js/main.js'></script> 
+  </body>
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+------------------
+Parent & Siblings:
+------------------
+
+$('.choice').on('click', event => {
+  $(event.currentTarget).parent().hide();
+});
+
+$('.choice').on('click', event => {
+  $(this).siblings().removeClass('selected');
+  $(event.currentTarget).addClass('selected');
+});
+
+
+---
+
+$(document).ready(() => {
+  $('.shoe-details').show();
+  $('.more-details-button').on('click', event => {
+  });  
+  
+  $('.shoe-details li').on('click', event => {
+    $(event.currentTarget).addClass('active');
+    $('.shoe-details').children().removeClass('disabled')   
+    $(event.currentTarget).siblings().removeClass('active')
+  });
+  
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+    $('.login-button').toggleClass('button-active');
+  });
+
+  $('.product-photo').on('mouseenter', () => {
+    $(this).addClass('photo-active');
+  }).on('mouseleave', function() {
+    $(this).removeClass('photo-active');
+  });
+
+  $('.menu-button').on('click', () => {
+    $('.menu-button').toggleClass('button-active');
+    $('.nav-menu').toggleClass('hide');
+  });
+})
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sole Shoes</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>
+          <span class='menu-button'>Menu</span>
+          <span class='login-button'>Login</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Nav Menu -->
+    <div class='nav-menu hide'>
+      <div class='container'>
+        <ul>
+          <li>Shoes</li>
+          <li>Women's Shoes</li>
+          <li>Men's Shoes</li>
+          <li>Shoe Accessories</li>
+          <li>Wholesale</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class='login-form'>
+      <div class='container'>
+        <form>
+          <h4>Username</h4>
+          <input class='username' />
+          <h4>Password</h4>
+          <input type='password' />
+          <input class='sign-in-button' type='submit' value='Sign In' />
+        </form>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo sole-air-ii'></div>
+        <div class='product-details'>
+          <h4>Sole Air II</h4>
+          <div>
+            <p>$35</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo tidal-x'></div>
+        <div class='product-details'>
+          <h4>Tidal X</h4>
+          <div>
+            <p>$40</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>6</li>
+              <li>7</li>
+              <li>10</li>
+              <li>12</li>
+              <li>13</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo dark-sole-original'></div>
+        <div class='product-details'>
+          <h4>Dark Sole Original</h4>
+          <div>
+            <p>$60</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>9</li>
+              <li>10</li>
+              <li>10.5</li>
+              <li>11</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart -->
+    <div class='shopping-cart'>
+      <div class='container'>
+        <div class='cart'>
+          <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+          <h3 class='items-qty'>1</h3>
+        </div>
+        <h3>Checkout</h3>
+      </div>
+    </div>
+
+    <footer>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>Contact Us</div>
+      </div>
+    </footer>
+
+     <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+
+    <script src='js/main.js'></script> 
+  </body>
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+
+
+-----------------------------------------------------------------------------------------------------------
+
+--------
+Closest:
+--------
+
+$('.example-class-one').closest('.another-class');
+
+<div class='.another-class'>
+  <p class='.example-class-one'>1</p>
+</div>
+<div class='.another-class'>
+  <p class='.example-class-two'>2</p>
+</div>
+
+
+---
+
+$(document).ready(() => {
+  $('.shoe-details').show();
+  $('.more-details-button').on('click', event => {
+  $(event.currentTarget).closest('.product-details').next().toggle()
+  });  
+  
+  $('.shoe-details li').on('click', event => {
+    $(event.currentTarget).addClass('active');
+    $(event.currentTarget).siblings().removeClass('active')
+    $(event.currentTarget).closest('.shoe-details').children().removeClass('disabled')
+  });
+  
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+    $('.login-button').toggleClass('button-active');
+  });
+
+  $('.product-photo').on('mouseenter', () => {
+    $(this).addClass('photo-active');
+  }).on('mouseleave', function() {
+    $(this).removeClass('photo-active');
+  });
+
+  $('.menu-button').on('click', () => {
+    $('.menu-button').toggleClass('button-active');
+    $('.nav-menu').toggleClass('hide');
+  });
+})
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sole Shoes</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>
+          <span class='menu-button'>Menu</span>
+          <span class='login-button'>Login</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Nav Menu -->
+    <div class='nav-menu hide'>
+      <div class='container'>
+        <ul>
+          <li>Shoes</li>
+          <li>Women's Shoes</li>
+          <li>Men's Shoes</li>
+          <li>Shoe Accessories</li>
+          <li>Wholesale</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class='login-form'>
+      <div class='container'>
+        <form>
+          <h4>Username</h4>
+          <input class='username' />
+          <h4>Password</h4>
+          <input type='password' />
+          <input class='sign-in-button' type='submit' value='Sign In' />
+        </form>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo sole-air-ii'></div>
+        <div class='product-details'>
+          <h4>Sole Air II</h4>
+          <div>
+            <p>$35</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo tidal-x'></div>
+        <div class='product-details'>
+          <h4>Tidal X</h4>
+          <div>
+            <p>$40</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>6</li>
+              <li>7</li>
+              <li>10</li>
+              <li>12</li>
+              <li>13</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo dark-sole-original'></div>
+        <div class='product-details'>
+          <h4>Dark Sole Original</h4>
+          <div>
+            <p>$60</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>9</li>
+              <li>10</li>
+              <li>10.5</li>
+              <li>11</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart -->
+    <div class='shopping-cart'>
+      <div class='container'>
+        <div class='cart'>
+          <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+          <h3 class='items-qty'>1</h3>
+        </div>
+        <h3>Checkout</h3>
+      </div>
+    </div>
+
+    <footer>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>Contact Us</div>
+      </div>
+    </footer>
+
+     <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+
+    <script src='js/main.js'></script> 
+  </body>
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+
+
+-----------------------------------------------------------------------------------------------------------
+
+-----
+Next:
+-----
+
+<div class='heading'>MENU</div>
+<ol style='display: none'>
+  <li>Appetizers</li>
+  <li>Entrees</li>
+  <li>Salads</li>
+  <li>Sides</li>
+  <li>Desserts</li>
+</ol>
+
+const $heading = $('.heading');
+$heading.on('click', () => {
+  $(event.currentTarget).next().toggle();
+});
+
+
+---
+
+$(document).ready(() => {
+  $('.shoe-details').show();
+  $('.more-details-button').on('click', event => {
+    $(event.currentTarget).closest('.product-details').next().toggle()
+  });  
+  
+  $('.shoe-details li').on('click', event => {
+    $(event.currentTarget).addClass('active');
+    $(event.currentTarget).siblings().removeClass('active')
+    $(event.currentTarget).closest('.shoe-details').children().removeClass('disabled')
+  });
+  
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+    $('.login-button').toggleClass('button-active');
+  });
+
+  $('.product-photo').on('mouseenter', () => {
+    $(this).addClass('photo-active');
+  }).on('mouseleave', function() {
+    $(this).removeClass('photo-active');
+  });
+
+  $('.menu-button').on('click', () => {
+    $('.menu-button').toggleClass('button-active');
+    $('.nav-menu').toggleClass('hide');
+  });
+})
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sole Shoes</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>
+          <span class='menu-button'>Menu</span>
+          <span class='login-button'>Login</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Nav Menu -->
+    <div class='nav-menu hide'>
+      <div class='container'>
+        <ul>
+          <li>Shoes</li>
+          <li>Women's Shoes</li>
+          <li>Men's Shoes</li>
+          <li>Shoe Accessories</li>
+          <li>Wholesale</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class='login-form'>
+      <div class='container'>
+        <form>
+          <h4>Username</h4>
+          <input class='username' />
+          <h4>Password</h4>
+          <input type='password' />
+          <input class='sign-in-button' type='submit' value='Sign In' />
+        </form>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo sole-air-ii'></div>
+        <div class='product-details'>
+          <h4>Sole Air II</h4>
+          <div>
+            <p>$35</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo tidal-x'></div>
+        <div class='product-details'>
+          <h4>Tidal X</h4>
+          <div>
+            <p>$40</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>6</li>
+              <li>7</li>
+              <li>10</li>
+              <li>12</li>
+              <li>13</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo dark-sole-original'></div>
+        <div class='product-details'>
+          <h4>Dark Sole Original</h4>
+          <div>
+            <p>$60</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>9</li>
+              <li>10</li>
+              <li>10.5</li>
+              <li>11</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart -->
+    <div class='shopping-cart'>
+      <div class='container'>
+        <div class='cart'>
+          <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+          <h3 class='items-qty'>1</h3>
+        </div>
+        <h3>Checkout</h3>
+      </div>
+    </div>
+
+    <footer>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>Contact Us</div>
+      </div>
+    </footer>
+
+     <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+
+    <script src='js/main.js'></script> 
+  </body>
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+
+
+-----------------------------------------------------------------------------------------------------------
+
+-----
+find:
+-----
+
+const $items = $('.myList').find('li');
+
+
+---
+
+$(document).ready(() => {
+  $('.more-details-button').on('click', event => {
+    $(event.currentTarget).closest('.product-details').next().toggle();
+    $(event.currentTarget).find('img').toggleClass('rotate')
+  });  
+  
+  $('.shoe-details li').on('click', event => {
+    $(event.currentTarget).addClass('active');
+    $(event.currentTarget).siblings().removeClass('active')
+    $(event.currentTarget).closest('.shoe-details').children().removeClass('disabled')
+  });
+
+  $('.login-button').on('click', () => {
+    $('.login-form').toggle();
+    $('.login-button').toggleClass('button-active');
+  });
+
+  $('.product-photo').on('mouseenter', () => {
+    $(this).addClass('photo-active');
+  }).on('mouseleave', function() {
+    $(this).removeClass('photo-active');
+  });
+
+  $('.menu-button').on('click', () => {
+    $('.menu-button').toggleClass('button-active');
+    $('.nav-menu').toggleClass('hide');
+  });
+})
+
+
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sole Shoes</title>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>
+          <span class='menu-button'>Menu</span>
+          <span class='login-button'>Login</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Nav Menu -->
+    <div class='nav-menu hide'>
+      <div class='container'>
+        <ul>
+          <li>Shoes</li>
+          <li>Women's Shoes</li>
+          <li>Men's Shoes</li>
+          <li>Shoe Accessories</li>
+          <li>Wholesale</li>
+        </ul>
+        <ul>
+          <li>Contact</li>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Email</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class='login-form'>
+      <div class='container'>
+        <form>
+          <h4>Username</h4>
+          <input class='username' />
+          <h4>Password</h4>
+          <input type='password' />
+          <input class='sign-in-button' type='submit' value='Sign In' />
+        </form>
+      </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo sole-air-ii'></div>
+        <div class='product-details'>
+          <h4>Sole Air II</h4>
+          <div>
+            <p>$35</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The ultimate in style and comfort, the Sole Air II's are great for walking and casual wearing.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo tidal-x'></div>
+        <div class='product-details'>
+          <h4>Tidal X</h4>
+          <div>
+            <p>$40</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>The Tidal X's signature rubber midsole make this the perfect running shoe. With a soft mesh upper, and synthetic polymer outsole, these shoes really fly.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>6</li>
+              <li>7</li>
+              <li>10</li>
+              <li>12</li>
+              <li>13</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class='container'>
+      <div class='product-card'>
+        <div class='product-photo dark-sole-original'></div>
+        <div class='product-details'>
+          <h4>Dark Sole Original</h4>
+          <div>
+            <p>$60</p>
+            <div class='more-details-button'>
+              <img src='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/right-arrow.svg' />
+            </div>
+          </div>
+        </div>
+
+        <div class='shoe-details'>
+          <p>Light up the night with the Dark Sole Original. Lights around the midsole activate when stomped.</p>
+          <div class='size-chart'>
+            <h4>Size</h4>
+            <ul class='sizes'>
+              <li>9</li>
+              <li>10</li>
+              <li>10.5</li>
+              <li>11</li>
+            </ul>
+          </div>
+          <div class='buy-now-button disabled'>
+            <h3>Add to cart</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping cart -->
+    <div class='shopping-cart'>
+      <div class='container'>
+        <div class='cart'>
+          <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/shopping-cart.svg'></object>
+          <h3 class='items-qty'>1</h3>
+        </div>
+        <h3>Checkout</h3>
+      </div>
+    </div>
+
+    <footer>
+      <div class='container'>
+        <object type='image/svg+xml' data='https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-logo.svg'></object>
+        <div>Contact Us</div>
+      </div>
+    </footer>
+
+     <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+
+    <script src='js/main.js'></script> 
+  </body>
+</html>
+
+
+---
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.1s; 
+}
+
+body {
+  font-family: 'Roboto Condensed', Helvetica, sans-serif;
+  text-align: left;
+  font-size: 18px;
+  color: #303030; 
+}
+
+.container {
+  max-width: 450px;
+  margin: 0 auto; 
+}
+
+h3 {
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em; 
+}
+
+h4 {
+  text-transform: uppercase; 
+}
+
+.disabled h3 {
+  color: #535353;
+  cursor: not-allowed; 
+}
+
+.button-active {
+  color: #C3FF00;
+  background-color: #535353; 
+}
+
+nav {
+  background-color: #303030;
+  color: #EFEFEF; 
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+nav .container object {
+  width: 4.5em;
+  padding: 1.2em 0.5em; 
+}
+
+nav .container .login-button,
+nav .container .menu-button {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1em 1.25em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.nav-menu {
+  background-color: #535353;
+  color: #EFEFEF;
+  display: flex;
+  justify-content: center; 
+}
+
+.nav-menu .container {
+  padding: 1.5em;
+  display: flex; 
+}
+
+.nav-menu .container ul {
+  list-style: none; 
+}
+
+.nav-menu .container ul li {
+  padding: 0.25em 2em; 
+}
+
+.nav-menu .container ul li:first-child {
+  text-transform: uppercase;
+  color: #C3FF00;
+  letter-spacing: 0.05em; 
+}
+
+.hide {
+  display: none; 
+}
+
+.login-form {
+  background-color: #535353;
+  padding: 1em 0 0;
+  color: #EFEFEF;
+  display: none; 
+}
+
+.login-form .container {
+  padding: 0 0.5em; 
+}
+
+.login-form h4 {
+  font-weight: 400; 
+}
+
+.login-form input {
+  width: calc(100% - 1em);
+  border: none;
+  height: 2em;
+  margin: 0.5em 0;
+  font-size: 1em;
+  padding: 0 0.5em; 
+}
+
+.login-form .sign-in-button {
+  background-color: #303030;
+  color: #C3FF00;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+  height: 2.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; 
+}
+
+.product-card {
+  margin: 1em 0; 
+}
+
+.product-card .dark-sole-original,
+.product-card .sole-air-ii,
+.product-card .tidal-x {
+  background-size: 28em 15em;
+  background-position: center;
+  height: 14em;
+  transition: 0.2s; 
+}
+
+.product-card .sole-air-ii {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/sole-air-ii.png"); 
+}
+
+.product-card .tidal-x {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/tidal-x.png"); 
+}
+
+.product-card .dark-sole-original {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/jquery/audit/images/dark-sole-original.png"); 
+}
+
+.product-card .photo-active {
+  background-size: 30.8em 16.5em;
+  transition: 0.2s; 
+}
+
+.product-card .product-details {
+  margin-top: -5px;
+  background-color: #EFEFEF;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.product-card .product-details h4,
+.product-card .product-details p {
+  padding: 0.7em 1.25em; 
+}
+
+.product-card .product-details div {
+  display: flex; 
+}
+
+.product-card .product-details .more-details-button {
+  background-color: #535353;
+  padding: 0.75em 1.25em;
+  cursor: pointer;
+  width: 1em;
+  transition: 0.1s; 
+}
+
+.product-card .product-details .more-details-button img {
+  position: relative;
+  left: 0.1em; 
+}
+
+.product-card .product-details .more-details-button .rotate {
+  transition: 0.1s;
+  transform: rotate(90deg); 
+}
+
+.product-card .shoe-details {
+  display: none;
+  background-color: #535353;
+  color: #EFEFEF; 
+}
+
+.product-card .shoe-details .active {
+  background-color: #C3FF00;
+  color: #303030; 
+}
+
+.product-card .size-chart,
+.product-card p {
+  padding: 1em 1.25em; 
+}
+
+.product-card .size-chart ul,
+.product-card p ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em; 
+}
+
+.product-card .size-chart ul li,
+.product-card p ul li {
+  padding: 0.5em;
+  background-color: #303030;
+  width: 100%;
+  text-align: center;
+  margin-right: 2px; 
+}
+
+.product-card .buy-now-button {
+  background-color: #303030;
+  text-align: center;
+  padding: 0.75em;
+  cursor: pointer; 
+}
+
+.shopping-cart {
+  background-color: #171717;
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 3.5em; 
+}
+
+.shopping-cart .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+.shopping-cart .container .cart {
+  display: flex; 
+}
+
+.shopping-cart .container .cart object {
+  margin-right: 0.75em; 
+}
+
+footer {
+  color: #EFEFEF;
+  background-color: #303030;
+  margin-top: 2em;
+  padding: 2em 0.5em; 
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between; 
+}
+
+footer .container object {
+  width: 4.5em; 
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+.children() - чтобы настроить таргетинг на дочерние элементы элемента
+.siblings() - для целевых элементов, примыкающих к элементу
+.parent() - чтобы нацелиться на родительский элемент
+.closest() - перемещается вверх по дереву DOM от текущего элемента к целевому ближайшему элементу с заданным селектором
+.next() - чтобы настроить таргетинг на элемент непосредственно следующий за выбранным элементом
+.prev() - чтобы настроить таргетинг на элемент, непосредственно предшествующий выбранному элементу
+.find() - для таргетинга элементов-потомков с помощью некоторого селектора, т. е. класса, идентификатора, тега и т. д
+
+
+-----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

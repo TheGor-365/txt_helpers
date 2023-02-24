@@ -1,0 +1,358 @@
+-------------------------
+Linux command line cmd's:
+-------------------------
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+~/ 						                            --- home dyrectory ( cd  ~/log = /home/user/log )
+!! 						                            --- запустить последнюю команду еще раз
+/ -type d -name notes. txt 			                --- look for directories use
+.						                            --- текущая директория
+..						                            --- на директорию выше
+../..						                        --- на 2 дирректории выше
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+cd 						                            --- путь к директории
+
+cp app.log /home/olga 				                --- cp что_копировать куда_копировать
+cp file.txt ..					                    --- копировать файл в директорию на уровень выше
+cp /opt/app/log /home/olga 			                --- копировать папку рекурсивно ( cp -r  путь_к_папке  путь_к_новому_месту )
+
+cat file.txt					                    --- вывести файл на экран
+cat > filename 					                    --- creates a new file
+cat > file.txt					                    --- ранить в файл прямо из консоли
+cat >> file.txt					                    --- добавить в конец файла
+cat filename1 filename2 > filename3 		        --- joins two files (1 and 2) and stores the output of them in a new file (3)
+cat filename | tr a-z A-Z > output.txt 		        --- convert a file to upper or lower case use
+cat /etc/*-release 				                    --- узнать версию OS
+
+chmod 						                        --- change the read, write, and execute permissions of files and directories
+chmod options permissions file name 		        --- execute permissions of files and directories
+chmod 754 myfile 				                    --- execute permissions of file
+chmod 644 file.htm 				                    --- "owner can read and write; group can read only; others can read only"
+chmod -R 755 myfiles 				                --- user can read, write, and execute; group members and other users can read and execute, but cannot write 
+chmod u=rw example.jpg 				                --- owner may read and write the file. Do not change the permissions for the group, or for others
+chmod u+s comphope.txt 				                --- anyone who attempts to access that file does so as if they are the owner of the file
+chmod 755 file.cgi 				                    --- "read, write, and execute by owner" and "read and execute by the group and everyone else"
+chmod 666 file.txt 				                    --- "read and write by everyone."
+
+chown testbase:testbase test.txt 		            --- сменить владельца файла
+chown -R testbase:testbase user 		            --- сменить владельца папки
+
+Ctrl + C 					                        --- убить процесс, запущенный в терминале
+Ctrl + Z 					                        --- остановить текущий процесс
+Ctrl + R 					                        --- вставить из буфера обмена
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+pwd 						                        --- working dyrectory
+
+ps ux 						                        --- PID the process identification number of the program
+ps 						                            --- показать снимок активных процессов
+
+pstree 						                        --- показать процессы в древовидной диаграмме
+
+pmap 						                        --- показать все запущенные процессы
+
+ping 						                        --- check your connectivity status to a server ( ping google.com )
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ls 						                            --- позволяет просмотреть содержимое каталога
+ls -l 						                        --- выведет более читабельный список
+ls -a 						                        --- список всех файлов (включая скрытые)
+ls -h 						                        --- узнать, как работает команда
+lshw 						                        --- список информации о конфигурации оборудования
+
+last 						                        --- показать последние системные логины
+
+locate 						                        --- search command in Windows
+locate [name] 					                    --- все файлы и каталоги, связанные с конкретным именем
+locate -i school*note 				                --- will search for any file that contains the word “school” and “note”
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+mkdir test  					                    --- создает папку с названием «test»
+mkdir -p one/two/three				                --- создает папку с названием 'one' в ней папку 'two' в ней 'three'
+mkdir -p 					                        --- create a directory in between two existing directories
+mkdir -p test/dir--{000..100} 			            --- создать много тестовых папок
+
+mv app.log /home/olga 				                --- переместить файл
+mv /opt/app/log/  /home/olga/bakup/ 		        --- переместить директорию
+mv file.txt file.txt2				                --- переименовать файл
+
+more [file_name] 				                    --- показать содержимое файла
+
+man ls 						                        --- узнать, как работает команда
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+touch app.log 					                    --- создаст пустой файл с названием «app.log»
+touch test/dir--{000..100}/file-{A..Z} 		        --- создать много и файлов
+
+tail 						                        --- will display the last ten lines of a text file
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+rm test.txt 					                    --- удалит файл test.txt
+rmdir 						                        --- delete a directory
+rm * 						                        --- удалит все файлы в текущей директории
+rm -r test_folder 				                    --- удалить папку
+rm -rf test_folder 				                    --- просто все удалит без разговоров
+rm -rfv test_folder 				                --- удалит папку со всем содержимым, но выведет имена удаляемых файлов
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+wget 						                        --- download files from the internet followed by the download link
+
+whereis newman 					                    --- куда приложение newman установилось
+
+wc 						                            --- показать количество слов, строк и байтов в файле
+
+whoami 						                        --- показать текущего пользователя
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+history 					                        --- показать последние 1000 команд
+
+hostname -I 					                    --- узнать IP машины
+
+head 						                        --- view the first lines of any text file
+head -n 5 filename.ext 				                --- show the first five lines
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+df -h 						                        --- места свободно на дисках
+
+du -sh 						                        --- сколько весит директория
+du -sh *  					                        --- сколько весит директория с разбиением
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ifconfig 					                        --- выведет кучу инфы, в том числе ваш внешний IP
+
+ip a 						                        --- аналог ifconfig 
+
+id 						                            --- показать подробности об активных пользователях
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+uname -a 					                        --- версия ядра
+useradd 					                        --- used to create a new user
+passwd 						                        --- adding a password to that user’s account
+useradd John 					                    --- add a new person named John
+passwd 123456789 				                    --- add password
+zip 						                        --- compress your files into a zip archive
+unzip 						                        --- extract the zipped files from a zip archive
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+find 						                        --- searches for files and directories
+find . -name '*.rb'				                    --- найти все файлы с расширением rb
+find . -name '*.rb' -type f			                --- поиск файлов (без директорий) с расширением `rb`
+find . -name '*bla*'				                --- поиск всех файлов в текущей директории, в имени которых содержится строка `bla`
+find /home/ -name notes.txt 			            --- will search for a file called notes.txt within the home directory and its subdirectories
+find . -name notes.txt 				                --- find files in the current directory use
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+grep 						                        --- search through all the text in a given file
+grep blue notepad.txt 				                --- will search for the word blue in the notepad file
+grep [pattern] [file_name] 			                --- поиск определенного паттерна в файле
+
+gpg -c [file_name] 				                    --- зашифровать файл
+gpg [file_name.gpg] 				                --- расшифровать файл
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+sudo 						                        --- require administrative or root permissions ( “SuperUser Do” )
+
+scp [file_name.txt] [server/tmp] 		            --- скопировать файл в каталог сервера через ssh
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+diff 						                        --- compares the contents of two files line by line
+diff file1.ext file2.ext 			                --- simplest form of diff
+
+dmesg 						                        --- сообщения, которые выводило ядро во время загрузки
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+tar 						                        --- archive multiple files into a ( tarball --- a common Linux file format that is similar to zip format )
+tar -cvf archive.tar /etc /root/anaconda-ks.cfg     --- create a tar archive file
+tar -tvf myarchive.tar 				                --- list the content of archive file
+tar -xvf myarchive.tar 				                --- extract files and directories from archive file
+tar -xvf myarchive.tar -C /tmp/ 		            --- extract tar archive file to a particular folder
+
+top 						                        --- will display a list of running processes and how much CPU each process uses
+
+tail -10 file.txt				                    --- вывести последние 10 строк
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+jobs 						                        --- will display all current jobs along with their statuses
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+kill 						                        --- stop running program ( kill [signal option] PID )
+killall [proc_name] 				                --- завершите все процессы, помеченные как proc
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+echo 						                        --- used to move some data into a file
+echo Hello, my name is John >> name.txt 		    --- add the text, “Hello, my name is John” into a file called name.txt
+
+exit 						                        --- выйти из текущей сессии
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+find [/folder/location] -name [a] 		            --- список имен, начинающиеся с указанного символа a в указанном месте /folder/location
+find [/folder/location] -size [+100M] 		        --- просмотр файлов, размер которых превышает указанный размер 100M в папке
+
+finger [username] 				                    --- показать информацию о конкретном пользователе
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+yum install [package_name.rpm] 			            --- установить пакет с помощью менеджера пакетов > YUM
+yum list installed 				                    --- список всех установленных пакетов с yum
+yum search [keyword] 				                --- найти пакет по связанному ключевому слову
+yum info [package_name] 			                --- показать информацию и краткую сводку о пакете
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+apt-get install [package_name] 			            --- установить пакет с помощью менеджера пакетов > APT
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+bat file.txt					                    --- вывести файл на экран с подсветкой и номерами строк
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+head -10 file.txt				                    --- вывети первые 10 строк  
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+scp						                            --- копирует файлы с удаленного сервера на локальный компьютер и обратно
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,391 @@
+---------------
+SQL Postgresql:
+---------------
+
+
+SQL train https://www.db-fiddle.com/
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DDL                                                                                     --- Создание и модификация базы данных 
+DML                                                                                     --- Наполнение базы данных 
+SELECT, WHERE, ORDER, LIMIT, DISTINCT, GROUP, HAVING                                    --- Выборка данных 
+COUNT                                                                                   --- Агрегирующие функции
+JOIN, LEFT JOIN                                                                         --- Соединения
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ps aux | grep postgres                                                                  --- запущен ли PostgreSQL
+sudo -u postgres psql                                                                   --- запуск программы от имени другого пользователя (postgres)
+psql postgres                                                                           --- запуск программы от имени текущего пользователя к БД postgres
+
+\q                                                                                      --- выход
+\?                                                                                      --- список команд
+
+https://postgrespro.ru/docs/postgrespro/11/database-roles                               --- roles
+
+whoami                                                                                  --- current user
+
+sudo -u postgres createuser --createdb tirion                                           --- флаг --createdb добавляет нашей роли возможность создавать базы данных. По умолчанию этой возможности нет
+sudo -u postgres createdb --owner=tirion hexlet                                         --- опция --owner позволяет указать владельца создаваемой базы данных
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+psql -l                                                                                 --- Посмотреть список баз данных
+dropdb                                                                                  --- delete db
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------
+DROP DATABASE:
+--------------
+
+DROP DATABASE hexlet;
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------------
+CREATE DATABASE:
+----------------
+
+CREATE DATABASE hexlet;
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------
+CREATE TABLE:
+-------------
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    first_name varchar(255),
+    last_name varchar(255),
+    created_at timestamp
+);
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------
+SELECT:
+-------
+
+SELECT FROM users;
+
+
+SELECT birthday FROM users
+WHERE birthday > '1999-10-23'
+ORDER BY first_name DESC
+LIMIT 3;
+
+
+SELECT
+    username,
+    created_at
+FROM users
+WHERE birthday < '2018-10-21'
+ORDER BY birthday DESC
+LIMIT 2;
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------
+CREATE:
+-------
+
+CREATE TABLE courses (
+    name          varchar(255),
+    slug          varchar(255),
+    lessons_count integer,
+    body          text
+);
+
+
+CREATE TABLE cars (
+    user_first_name varchar(255),
+    brand varchar(255),
+    model varchar(255)
+);
+
+
+CREATE TABLE products (
+    id bigint PRIMARY KEY,
+    first_name varchar(255),
+    last_name varchar(255),
+    address varchar(255),
+    item varchar(255),
+    price numeric -- специальный тип данных, подходящий под работу с деньгами. Обеспечивает высокую точность при расчетах.
+);
+
+
+CREATE TABLE City
+(
+  id   INTEGER NOT NULL PRIMARY KEY,
+  name CHAR(40)
+)
+
+CREATE TABLE Street
+(
+  id      INTEGER NOT NULL PRIMARY KEY,
+  name    CHAR(40),
+  id_city INTEGER NOT NULL FOREIGN KEY REFERENCES City(id)
+)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----
+DROP:
+-----
+
+DROP TABLE courses;
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------
+INSERT INTO:
+------------
+
+INSERT INTO courses (name, slug, lessons_count, body)
+  VALUES ('basics of programming', 'basics', 10, 'this is theory');
+
+
+
+INSERT INTO courses (name, slug) VALUES ('Bash', 'bash');
+
+
+
+INSERT INTO courses (name, slug) VALUES
+  ('Bash', 'bash'), ('PHP', 'php'), ('Ruby', 'ruby');
+
+
+
+INSERT INTO courses VALUES ('linux', 'linux', 3, 'something about linux');
+
+
+INSERT INTO users VALUES
+    ('arya', 'Mike'),
+    ('sansa', 'Eric');
+
+INSERT INTO cars VALUES
+    ('arya', 'BMW'),
+    ('arya', 'MERSEDES'),
+    ('sansa', 'TOYOTA'),
+    ('sansa', 'LEXUS'),
+    ('sansa', 'NISSAN');
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------
+UPDATE:
+-------
+
+
+UPDATE courses SET body = 'updated!' WHERE slug = 'bash';
+
+
+
+UPDATE courses SET body = 'updated!', name = 'Bash' WHERE slug = 'bash';
+
+
+
+UPDATE courses SET body = 'oops';
+
+
+
+UPDATE courses SET name = 'new name' WHERE lessons_count > 3;
+
+
+
+UPDATE courses SET name = 'another new name' WHERE lessons_count < 2;
+
+
+
+UPDATE courses SET name = 'new name'
+  WHERE slug = 'bash' AND lessons_count > 3;
+
+
+
+UPDATE courses SET name = 'another new name'
+  WHERE lessons_count < 2 OR lessons_count > 8;
+
+
+
+UPDATE courses SET name = 'another new name'
+  WHERE (lessons_count > 2 AND lessons_count < 8) OR slug = 'linux';
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------
+DELETE:
+-------
+
+
+DELETE FROM courses WHERE slug = 'bash';
+
+
+
+TRUNCATE courses;
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

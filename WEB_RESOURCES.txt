@@ -1,0 +1,1208 @@
+NODE.JS:
+--------
+
+https://nodejs.org/en/ 				    - original site
+https://nodejs.org/en/about/ 			- about node.js
+https://nodejs.org/en/download/			- download node.js
+https://nodejs.org/api/				    - node.js v14.3.0 Documentation
+ 
+https://www.codecademy.com/learn
+/linear-data-structures/modules/cspath-nodes
+/cheatsheet 					        - Learn Nodes
+
+https://www.codecademy.com/learn
+/learn-node-js/modules
+/introduction-to-node-js/cheatsheet		- Introduction to Node.js
+
+https://expressjs.com/				    - Express 4.17.1 framework for Node.js
+https://nodejs.org/dist/latest-v12.x/docs/api/	- Node.js v12.16.3 Documentation
+https://expressjs.com/en/5x
+/api.html#express.json				    - express()
+
+https://www.npmjs.com/				    - npm
+https://www.npmjs.com/package/nodemon		- nodemon
+
+https://www.codecademy.com/articles
+/setting-up-node-locally			    - Setting Up Node Locally
+
+https://www.codecademy.com/articles
+/getting-user-input-in-node-js			- Getting User Input in Node.js
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CODEACADEMY:
+------------
+
+https://www.codecademy.com/			    - codeacademy
+
+https://www.codecademy.com/learn
+/complex-data-structures/modules
+/cspath-hash-maps/cheatsheet 			- Learn Hash Maps
+
+https://www.codecademy.com/learn
+/introduction-to-regular-expressions
+/modules/intro-to-regex/cheatsheet 		- Introduction to Regular Expressions
+
+https://www.codecademy.com/articles
+/request-response-cycle-forms 			- Request-Response Cycle III
+
+https://discuss.codecademy.com/t
+/orientation-welcome-to-codecademy-forums
+/176345 					            - Forum
+
+https://discuss.codecademy.com/t
+/guide-how-to-build-a-web-dev-portfolio
+/394816 					            - portfolio
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DEVELOPER TOOLS:
+----------------
+
+https://insights.stackoverflow.com
+/survey/2019#most-loved-dreaded-and-wanted 	- Stackoverflow developer survey 2019
+
+https://www.smashingmagazine.com/2013/06
+/workflow-design-develop-
+modern-portfolio-website/ 			        - Workflow To Design
+
+https://www.dictionary.com
+/browse/good-thing				            - Good thing | Definition of Good thing at Dictionary.com
+
+https://medium.com/				            - A new way to control your experience
+https://www.autohotkey.com/			        - The ultimate automation scripting language for Windows
+https://plnkr.co/edit/?p=preview&preview	- Plunker
+https://paste2.org/				            - Create Paste
+https://ui-patterns.com/			        - User Interface Design patterns
+https://techcrunch.com/				        - About Startups
+https://web.dev/add-manifest/			    - Add a web app manifest
+https://caniuse.com/#feat=es6			    - Can i use
+https://beautifier.io/				        - Online JavaScript Beautifier
+https://openweathermap.org/current		    - Current weather data
+
+https://developer.foursquare.com/docs
+/api-reference/venues/explore/			    - Venue Recommendations
+
+https://developer.mozilla.org/en-US
+/docs/Glossary/CDN				- CDN
+
+https://modernizr.com/				- What is Modernizr
+http://vanilla-js.com/				- Vanilla JS
+https://www.datamuse.com/api/			- The Datamuse API is a word-finding
+
+https://developer.foursquare.com
+/docs/api-reference/venues/details/		- Venue Details
+
+https://developer.foursquare.com/docs
+/api-reference/venues/categories/		- Venue Categories
+
+https://openweathermap.org/guide/#how		- OpenWeatherMap API guide
+
+https://ru.foursquare.com/developers
+/login?continue=%2Fdevelopers%2Fregister	- Foursquare, Location Data Company
+
+https://developer.foursquare.com/		- Create Magical Real-World
+https://unsplash.com/				- Unsplash, The internet’s source of freely-usable images
+https://fontawesome.com/start			- CDN powered Kits
+https://handlebarsjs.com/			- Minimal templating on steroids
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/build-interactive-websites/modules
+/templating-with-handlebars/cheatsheet 		- Templating With Handlebars
+
+https://code.visualstudio.com/docs
+/editor/integrated-terminal			- Integrated Terminal
+
+https://github.com/cronvel/terminal-kit		- Terminal Kit
+https://www.vagrantup.com/			- Vagrant
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DATABASE:
+---------
+
+https://api.rubyonrails.org/classes
+/ActiveRecord/Associations/ClassMethods.html 	- ActiveRecord::Associations::ClassMethods
+
+https://www.sql.ru/				- all about SQL
+https://www.sisense.com/product/data-teams/	- The Advanced Analytics Platform
+
+https://www.idc.com
+/getdoc.jsp?containerId=US44363318 		- International Data Corporation
+
+https://www.w3big.com/ru/ruby
+/ruby-database-access.html			- DBI Учебник
+
+https://www.postgresql.org/			- PostgreSQL
+https://www.mongodb.com/			- MongoDB
+https://redis.io/				- Redis
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DEPLOYMENT:
+-----------
+
+https://domains.google.com/m/registrar/		- Google domains
+https://domains.google/				- Find your place online
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HTML5:
+------
+
+https://www.w3schools.com/html
+/html5_webstorage.asp 				- HTML Web Storage API
+
+https://html.spec.whatwg.org/multipage
+/rendering.html 				- Living Standard — Last Updated 21 May 2020
+
+https://developer.mozilla.org
+/en-US/docs/Web/API/HTMLElement/hidden		- HTMLElement.hidden
+
+https://html5book.ru/specsimvoly-html		- Спецсимволы HTML
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+GITHUB:
+-------
+
+https://habr.com/ru/post/125999/		- Pull request'ы на GitHub
+https://github.com/facebook/react		- react github
+
+https://www.codecademy.com
+/articles/push-to-github			- Push to GitHub
+
+https://github.com/rails/rails			- rails
+
+https://github.com/mapbox/node-sqlite3
+/wiki/API#databaserunsql-param--callback 	- sqlite
+
+https://github.com/rubyschool-us		- rubyschool github 
+https://github.com/DefactoSoftware/Hours	- hours
+
+https://github.com/tkrotoff
+/jquery-simplecolorpicker			- Very simple jQuery color picker
+
+http://gearmobile.github.io/gulp/gitignore/	- .gitignore
+
+https://help.github.com/en/github/using-git
+/pushing-commits-to-a-remote-repository 	- Pushing commits to a remote repository
+
+https://pages.github.com/			- What is GitHub Pages?
+
+https://help.github.com/en/github
+/authenticating-to-github
+/creating-a-personal-access-token-
+for-the-command-line 				- Creating a personal access token for the command line
+
+https://github.com/sinatra/sinatra		- sinatra
+https://github.com/xdan/datetimepicker		- jQuery DateTimePicker
+
+https://git.github.com/ryansobol/5252653	- ryansobol
+https://github.com/ro31337/first-visit-js	- first_visit.js
+https://github.com/cronvel/terminal-kit		- Terminal Kit
+https://github.com/wildbit/postmark-gem		- postmark-gem
+https://github.com/wildbit/postmark-rails	- postmark-rails
+https://github.com/krdprog/rubyschool-notes	- homework rubyschool
+https://github.com/msys2/MINGW-packages		- mingw packages
+
+https://github.com/bootstrap-ruby
+/sinatra-bootstrap				- Sinatra Bootstrap
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+FRONTAND FRAMEWORK:
+-------------------
+
+https://getbootstrap.com/docs
+/4.4/getting-started/introduction/		- Quick start
+
+https://itchief.ru/bootstrap
+/tooltips#id-4					- Bootstrap Tooltips
+
+https://www.geeksforgeeks.org
+/bootstrap-4-tooltip/ 				- Bootstrap 4 | Tooltip
+
+https://plnkr.co/edit/?p=preview&preview	- Plunker
+https://ui-patterns.com/			- User Interface Design patterns
+
+https://stackoverflow.com/questions
+/47479951/bootstrap-dynamic-size-of-items 	- dynamic bootstrap
+
+https://getbootstrap.com/docs/4.5/examples/	- Examples bootstrap
+https://www.berriart.com/sidr/			- jQuery plugin for creating side menus
+
+https://www.flaticon.com
+/search?word=social%20media			- favicons icons
+
+https://stackoverflow.com/questions
+/19607851/use-bootstrap-grid-with-
+variable-number-of-cells			- use bootstrap
+
+https://www.codecademy.com/articles
+/bootstrap-menus-navbar-modals			- Bootstrap: Creating Menus, Navbars, and Modals
+
+https://bootstrap-4.ru/docs/4.0
+/components/jumbotron/				- Jumbotron
+
+https://github.com/tkrotoff
+/jquery-simplecolorpicker			- Very simple jQuery color picker
+
+https://themes.getbootstrap.com/		- Build anything
+https://html5css.ru/bootstrap4/default.php	- https://html5css.ru/bootstrap4/default.php
+https://www.favicon-generator.org/		- Favicon & App Icon Generator
+https://fontawesome.com/start			- CDN powered Kits
+https://www.bootstrapcdn.com/fontawesome/	- BootstrapCDN, Font Awesome
+https://xdsoft.net/jqplugins/datetimepicker/	- DateTimePicker
+https://github.com/xdan/datetimepicker		- jQuery DateTimePicker
+https://handlebarsjs.com/			- Minimal templating on steroids
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/build-interactive-websites/modules
+/templating-with-handlebars/cheatsheet 		- Templating With Handlebars
+
+https://www.bootstrapcdn.com/			- Bootstrap CDN
+
+https://github.com/bootstrap-ruby
+/sinatra-bootstrap				- Sinatra Bootstrap
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CSS:
+----
+
+https://developer.mozilla.org/en-US
+/docs/Learn/CSS/Building_blocks
+/Cascade_and_inheritance 			- Cascade and inheritance
+
+https://developer.mozilla.org
+/en-US/docs/Web/CSS/Pseudo-classes 		- Pseudo-classes
+
+https://cloudflare.design/color			- color
+https://color.adobe.com/ru/create/color-wheel	- Adobe color
+
+https://developer.mozilla.org
+/en-US/docs/Web/CSS/position			- position
+
+https://developer.mozilla.org/en-US
+/docs/Learn/CSS/CSS_layout/Flexbox 		- Flexbox
+
+https://css-tricks.com
+/perfect-full-page-background-image/		- Perfect Full Page Background Image
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS/transition			- transition
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS/border				- border
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks/getting-more-
+advanced-with-design/modules
+/learn-responsive-design-module/cheatsheet	- learn responsive design module
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS/Specificity			- Specificity
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS/display				- display
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS					- CSS: Cascading Style Sheets
+
+https://fonts.google.com/			- Google fonts
+
+https://www.codecademy.com/learn
+/learn-css/modules/learn-css-box-model
+/cheatsheet 					- The Box Model
+
+https://www.codecademy.com/learn
+/learn-css/modules
+/learn-css-selectors-visual-rules/cheatsheet 	- Selectors and Visual Rules
+
+https://material.io/design			- Design
+
+https://lightningdesignsystem.com
+/utilities/text/				- About Text
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS/CSS_Grid_Layout
+/Box_Alignment_in_CSS_Grid_Layout
+#Justifying_Items_on_the_Inline_or_Row_Axis	- Grid
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS/grid-row-start 			- grid row start
+
+https://www.w3schools.com
+/colors/colors_picker.asp			- HTML Color Picker
+
+https://www.w3schools.com/cssref
+/css_colors.asp					- CSS Colors
+
+https://developer.mozilla.org
+/en-US/docs/Web/CSS/color_value			- color
+
+https://html5css.ru/howto
+/howto_css_round_buttons.php			- css
+
+https://developer.mozilla.org/en-US
+/docs/Web/CSS/box-sizing			- box-sizing
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+JAVASCRIPT:
+-----------
+
+https://www.techonthenet.com/js
+/string_repeat.php 				- String repeat() method
+
+https://stackoverflow.com/questions/6259982
+/how-do-you-use-the-conditional-
+operator-in-javascript 				- conditional, ternary operator
+
+https://www.codecademy.com/learn
+/introduction-to-javascript/modules
+/learn-javascript-introduction/cheatsheet 	- Introduction
+
+https://stackoverflow.com/questions/51165
+/how-to-sort-strings-in-javascript 		- sort strings in js
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference/Global_Objects/Error  - Error
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference
+/Global_Objects
+/Object#Methods_of_the_Object_constructor 	- Object
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference/Functions
+/Arrow_functions 				- Arrow function expressions
+
+https://developer.mozilla.org/en-US
+/docs/Glossary/Falsy				- Falsy
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference
+/Global_Objects/String 				- String
+
+https://www.digitalocean.com/community
+/tutorials/how-to-use-the-javascript-
+developer-console 				- Use the JavaScript Developer Console
+
+https://beautifier.io/				- Online JavaScript Beautifier
+https://openweathermap.org/current		- Current weather data
+
+https://dmitripavlutin.com
+/gentle-explanation-of-this-in-javascript/	- The mystery of this
+
+https://exploringjs.com/es6/ch_classes.html	- Classes
+
+https://hacks.mozilla.org/2015/08
+/es6-in-depth-subclassing/			- ES6 In Depth: Subclassing
+
+https://hacks.mozilla.org/2015/07
+/es6-in-depth-classes/				- ES6 In Depth: Classes
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference/Classes		- Classes
+
+https://eloquentjavascript.net/01_values.html	- Values, Types, and Operators
+https://www.w3schools.com/js/js_htmldom.asp	- JavaScript HTML DOM
+
+https://developer.mozilla.org
+/en-US/docs/Web/JavaScript			- JavaScript
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference/Global_Objects
+/String/substring 				- String.prototype.substring()
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/webdev-intermediate-javascript
+/modules/errors-and-error-handling/cheatsheet 	- error
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/webdev-intermediate-javascript
+/modules/intermediate-javascript-modules
+/cheatsheet 					- Modules
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference
+/Global_Objects/Array/Reduce?v=example 		- Array.prototype.reduce()
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference/Functions/get	- getter
+
+https://developer.mozilla.org/en-US
+/docs/Web/Events				- Event reference
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/build-interactive-websites/modules
+/web-dev-interactive-websites/cheatsheet 	- js
+
+https://lodash.com/docs/4.17.15			- Array Methods
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference/Global_Objects
+/Array/reverse 					- Array.prototype.reverse()
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference/Global_Objects
+/Object/keys 					- Object.keys()
+
+https://developer.mozilla.org/en-US
+/docs/Glossary/Global_object			- Global object
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference
+/Statements/for...in				- for...in
+
+https://www.codecademy.com/learn
+/paths/web-development/tracks
+/web-dev-js-arrays-loops-objects
+/modules/learn-javascript-objects/cheatsheet	- loop js
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference/Global_Objects
+/Array#Iteration_methods			- Iteration
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference/Global_Objects
+/Function 					- Function
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference/Global_Objects
+/Math/round 					- Math.round()
+
+https://developer.mozilla.org/en-US
+/docs/Glossary/Hoisting				- Hoisting
+
+https://developer.mozilla.org/en-US/docs/Web
+/JavaScript/Reference/Statements/var		- var
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference
+/Lexical_grammar#Keywords 			- Keywords
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference/Global_Objects
+/Number 					- Number
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference/Global_Objects/Math	- Math
+
+https://stackoverflow.com/questions/3138564
+/looping-through-localstorage-in-html5-
+and-javascript 					- localStorage
+
+https://developer.mozilla.org
+/ru/docs/Web/API/Window/localStorage		- Window.localStorage
+
+http://vanilla-js.com/				- Vanilla JS
+
+https://developer.mozilla.org
+/en-US/docs/Web/API/Fetch_API			- Fetch API
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/Reference
+/Global_Objects/Promise 			- Promise
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/webdev-intermediate-javascript/modules
+/intermediate-javascript-requests/cheatsheet	- intermediate javascript
+
+https://developer.mozilla.org/en-US/docs
+/Web/JavaScript/EventLoop			- Concurrency model and the event loop
+
+https://developers.rebrandly.com/docs		- API for custom short URLs - Code snippet
+
+https://www.codecademy.com/learn
+/build-interactive-websites/modules
+/web-dev-interactive-websites/cheatsheet	- interactive websites
+
+https://developer.mozilla.org/en-US
+/docs/Web/JavaScript/Reference
+/Global_Objects					- Standard built-in objects
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+REACT.JS:
+---------
+
+https://www.codecademy.com
+/articles/how-to-create-a-react-app		- Creating a React App
+
+https://reactjs.org/docs/forms.html		- Forms
+https://reactjs.org/docs/dom-elements.html	- DOM Elements
+https://reactjs.org/docs/handling-events.html	- Handling Events
+
+https://reactjs.org/docs
+/react-api.html#react.createelement		- React Top-Level API
+
+https://reactjs.org/docs
+/events.html#supported-events			- SyntheticEvent
+
+https://www.yelp.com
+/login?return_url=%2Fdevelopers
+%2Fv3%2Fmanage_app				- Yelp connects people with
+
+http://www.teach-ict.com/as_a2_ict_new
+/ocr/AS_G061/311_data_info_knowledge
+/static_dynamic_data/miniweb/pg4.htm 		- Dynamic information sources
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/front-end-applications-with-react
+/modules/react-101-components-interacting-u
+/cheatsheet					- react
+
+https://github.com/facebook/react-devtools	- react_devtools
+https://github.com/facebook/react		- react github
+
+https://www.codecademy.com/articles
+/react-virtual-dom				- React: The Virtual DOM
+
+https://www.codecademy.com/learn
+/react-102/modules
+/react-102-stateless-inherit-stateful-u
+/cheatsheet 					- react inherit
+
+https://www.codecademy.com/learn/paths
+/web-development
+/tracks/front-end-applications-with-react
+/modules/react-101-react-components-u
+/cheatsheet 					- react components
+
+https://medium.mybridge.co
+/22-amazing-open-source-react-
+projects-cb8230ec719f#.o5umedb6v 		- React.js Top 10 Articles
+
+https://www.codecademy.com/learn
+/paths/web-development/tracks
+/front-end-applications-with-react
+/modules/learn-javascript-transpilation
+/cheatsheet 					- learn javascript transpilation
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DOM:
+----
+
+https://eloquentjavascript.net/14_dom.html	- The Document Object Model
+
+https://www.codecademy.com/articles
+/react-virtual-dom				- React: The Virtual DOM
+
+https://www.w3schools.com/js/js_htmldom.asp	- JavaScript HTML DOM
+
+https://developer.mozilla.org/en-US
+/docs/Web/API/Document				- Document
+
+https://developer.mozilla.org/en-US/docs
+/Web/API/Document_Object_Model			- Document Object Model (DOM)
+
+https://www.codecademy.com/learn
+/paths/web-development/tracks
+/build-interactive-websites/modules
+/dom-javascript-events/cheatsheet		- dom javascript events
+
+https://developer.mozilla.org/en-US
+/docs/Web/API/Text				- Text
+
+https://developer.mozilla.org
+/en-US/docs/Web/API/Element			- Element
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+JSX:
+----
+
+https://www.codecademy.com/learn/react-101
+/modules/react-101-jsx-u/cheatsheet 		- JSX
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks/front-end-
+applications-with-react/modules
+/react-101-jsx-u/cheatsheet 			- react jsx
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RAILS:
+------
+
+https://api.rubyonrails.org/classes
+/ActiveRecord/ConnectionAdapters
+/TableDefinition.html 				- ActiveRecord::ConnectionAdapters::TableDefinition < Object
+
+https://railsguides.net
+/advanced-rails-model-generators/		- Advanced Rails model generators
+
+https://api.rubyonrails.org/classes/ActionView
+/Helpers/UrlHelper.html#method-i-link_to 	- Signatures
+
+https://guides.rubyonrails.org/routing.html	- Rails Routing from the Outside In
+https://guides.rubyonrails.org/			- Ruby on Rails Guides (v6.0.3.1)
+
+https://internet--technologies-ru.
+turbopages.org/s/internet-technologies.ru
+/articles/bystryy-start-rails-sqlite.html 	- quick start ror
+
+https://guides.rubyonrails.org
+/active_record_basics.html#create		- Active Record create
+
+https://guides.rubyonrails.org
+/active_record_migrations.html#creating-a-
+standalone-migration 				- db/migrate
+
+https://jekyllrb.com/docs/			- Jekyll is a static site generator
+
+https://guides.rubyonrails.org
+/action_controller_overview.html#filters	- filters
+
+https://www.berriart.com/sidr/			- jQuery plugin for creating side menus
+
+https://guides.rubyonrails.org
+/asset_pipeline.html#coding-links-to-assets 	- Coding links assets
+
+https://www.codecademy.com/articles
+/standard-controller-actions			- Standard Controller Actions
+
+http://rubydev.ru/ruby_tutorial/		- RoR tutorial
+https://github.com/rails/rails			- rails
+
+https://guides.rubyonrails.org
+/active_record_validations.html			- Active Record Validations
+
+https://api.rubyonrails.org/classes
+/ActiveRecord/Persistence.html			- Active Record Persistence
+
+https://guides.rubyonrails.org
+/active_record_querying.html			- Active Record Query Interface
+https://github.com/rubyschool-us		- rubyschool github 
+
+https://riptutorial.com/ru/ruby/example/14085
+/запись-строки-в-файл				- Запись строки в файл
+
+https://guides.rubyonrails.org/routing.html	- routing
+
+http://stackoverflow.com/questions/20918321
+/how-exacty-http-protocol-works			- http protocol
+
+http://stackoverflow.com/questions/2092527
+/what-happens-when-you-type-in-a-url-in-browser	- what happens when you type in a url in browser
+
+http://stackoverflow.com/questions/13200152
+/why-say-that-http-is-a-stateless-protocol	- stateless protocol
+
+http://api.rubyonrails.org/classes
+/ActionViews/Helpers
+/UrlHelper.html#method-i-link_to		- link_to
+
+http://railsguides.net
+/advanced-rails-model-generators/		- model generators
+
+http://api.rubyonrails.org/classes
+/ActiveRecord/Associations/ClassMethods.html	- Associations
+
+https://rubyonrails.org/			- RoR
+https://github.com/rails/rails-dev-box		- rails dev box all for ruby development
+http://rusrails.ru/action-mailer-basics		- Основы Action Mailer
+https://github.com/wildbit/postmark-gem		- postmark-gem
+https://github.com/wildbit/postmark-rails	- postmark-rails
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SINATRA:
+--------
+
+http://sinatrarb.com/				- sinatra documentation
+https://github.com/sinatra/sinatra		- sinatra on github
+
+https://www.devdungeon.com/content
+/ruby-sinatra-tutorial#toc-34			- sinatra tutorial
+
+https://github.com/T-Dnzt/booklist		- bookList github
+
+https://x-team.com/blog
+/how-to-create-a-ruby-api-with-sinatra/		- bookList
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+JQUERY:
+-------
+
+https://www.berriart.com/sidr/			- jQuery plugin for creating side menus
+
+https://www.jqueryscript.net/demo
+/Clean-Flexible-jQuery-Content-Slider-
+Plugin-unslider/ 				- jQuery slider
+
+http://jqapi.com/				- jQAPI - Alternative jQuery Documentation Browser
+
+https://www.codecademy.com/learn
+/learn-jquery/modules/learn-jquery-effects
+/cheatsheet 					- Learn jQuery: Effects
+
+https://www.codecademy.com/learn/learn-jquery
+/modules/learn-jquery-introduction/cheatsheet 	- Learn jQuery: Introduction
+
+https://api.jquery.com/category/effects/	- Category: Effects
+https://api.jquery.com/fadetoggle/		- .fadeToggle()
+https://api.jquery.com/ready/			- .ready()
+
+https://learn.jquery.com/using-jquery-core
+/document-ready/				- $( document ).ready()
+
+http://jqapi.com/				- jQAPI - Alternative jQuery Documentation Browser
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HEROKU:
+-------
+
+https://www.codecademy.com/articles
+/map-a-custom-domain				- $ heroku domains:add www.yourname.com
+
+https://www.codecademy.com/articles
+/deploy-rails-to-heroku				- INSTRUCTIONS
+
+https://devcenter.heroku.com
+/articles/custom-domains			- Custom Domain Names for Apps
+
+https://devcenter.heroku.com/articles
+/getting-started-with-rails4			- Getting Started with Rails 4.x on Heroku
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SQLITE:
+-------
+
+https://www.sqlite.org/lang_datefunc.html	- Date And Time Functions
+
+https://www.codecademy.com/paths
+/analyze-data-with-sql/tracks
+/analyze-data-sql-go-off-platform
+/modules/analyze-data-sql-commands-review
+/articles/sql-commands 				- sql commands
+
+https://www.codecademy.com/paths
+/analyze-data-with-sql/tracks
+/analyze-data-sql-get-started-with-sql
+/modules/what-is-sql/articles
+/what-is-rdbms-sql 				- analyze data sql
+
+https://www.codecademy.com/paths
+/web-development/tracks/building-a-
+persistent-api/modules
+/persistent-api-cumulative-projects
+/informationals/cumulative-project-expresso	- cumulative project
+
+https://www.codecademy.com/paths
+/web-development/tracks
+/building-a-persistent-api/modules
+/persistent-api-cumulative-projects
+/articles/what-is-crud				- what is crud
+
+https://github.com/mapbox/node-sqlite3
+/wiki/API#databaserunsql-param--callback 	- sqlite3
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/sql-for-web-development/modules
+/webdev-sql-multiple-tables/cheatsheet 		- Multiple SQL
+
+https://www.codecademy.com/articles
+/what-is-rdbms-sql				- Relational Database
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks
+/sql-for-web-development/modules
+/webdev-sql-intro/cheatsheet 			- SQL Introduction
+
+http://rubyonwindowsguides.github.io
+/book/ch02-05.html				- Ruby on Windows Guides
+
+https://stackoverflow.com/questions/9614236
+/escaping-strings-for-ruby-sqlite-insert 	- ruby sqlite
+
+https://education.oracle.com/mysql
+/mysql-database-administration/product_159	- Oracle MySQL Database
+
+https://www.mysql.com/				- MySQL
+https://www.sqlite.org/lang.html		- SQL As Understood By SQLite
+
+https://www.codecademy.com/learn
+/learn-sql/modules
+/learn-sql-aggregate-functions/cheatsheet	- sql aggregate functions
+
+http://2016.padjo.org/tutorials
+/sqlite-data-starterpacks
+/#toc-american-community-survey-1-
+year-data-for-2015				- year data for 2015
+
+https://www.codecademy.com/learn
+/learn-sql/modules/learn-sql-manipulation
+/cheatsheet					- sql manipulation
+
+http://www.sqlishard.com/			- SQL is Hard
+https://sqlite.org/download.html		- SQLite Download Page
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ARTICLES:
+---------
+
+https://help.codecademy.com/hc/en-us		- We're here to help
+https://www.codecademy.com/articles		- Codecademy Articles
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CONSOLE:
+--------
+
+https://www.codecademy.com/articles
+/command-line-commands				- List of Command Line Commands
+
+https://www.codecademy.com/learn
+/learn-the-command-line/modules
+/learn-the-command-line-manipulation
+/cheatsheet					- manipulation
+
+http://www.linfo.org/head.html			- The head Command
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RUBY:
+-----
+
+https://www.ruby-forum.com/t
+/the-definitive-list-of-or-equal-threads-
+and-pages/136446 				- explain nuances of ||=
+
+https://www.w3big.com/ru/ruby
+/ruby-database-access.html			- DBI Учебник
+
+https://ruby-doc.org/core-2.6.4/Kernel.html	- Kernel
+
+https://www.codecademy.com/learn
+/learn-ruby/modules
+/learn-ruby-introduction-to-ruby-u/cheatsheet 	- Introduction to Ruby
+
+https://medium.com/rubycademy
+/the-yield-keyword-603a850b8921			- The yield Keyword in Ruby
+
+https://ruby-doc.org/core-2.7.1/String.html	- String
+https://ruby-doc.org/core-2.4.1/Array.html	- Array
+https://ruby-doc.org/core-2.5.0/Integer.html	- Integer
+
+https://ruby-doc.org/docs/Manual
+/man-1.4/syntax.html				- Ruby syntax
+
+https://ruby-doc.org/core-2.5.1/Hash.html	- Hash 2.5.1
+https://ruby-doc.org/core-2.7.1/Hash.html	- Hash 2.7.1
+https://ruby-doc.org/core-2.5.3/Method.html	- Method 2.5.3
+https://ruby-doc.org/core-2.7.1/Object.html	- Object 2.7.1
+
+https://www.tutorialspoint.com
+/ruby/ruby_variables.htm			- Ruby - Variables, Constants and Literals
+
+https://ruby-doc.org/core-2.5.3/Class.html	- Class
+https://ruby-doc.org/core-2.5.0/File.html	- File
+https://rubyrush.ru/				- Ruby Rush
+https://ruby-doc.org/core-2.7.1/Module.html	- Module 2.7.1
+
+https://www.tutorialspoint.com/ruby
+/ruby_modules.htm				- Ruby - Modules and Mixins
+
+https://ruby-doc.org/core-2.7.1/Time.html	- Time 2.7.1
+https://docs.ruby-lang.org/en/2.4.0/Time.html	- class Time
+
+https://ruby-doc.org/stdlib-2.6.1/libdoc
+/date/rdoc/Date.html				- Date
+
+https://ruby-doc.org/stdlib-2.6.1/libdoc
+/date/rdoc/DateTime.html			- DateTime
+
+https://ruby-doc.org/core-2.6/Math.html		- Math
+https://ruby-doc.org/core-2.7.1/IO.html		- IO
+https://ruby-doc.org/core-2.6.1/Range.html	- Range
+https://ruby-doc.org/stdlib-2.7.1/		- Ruby 2.7.1 Standard Library Documentation
+
+https://ruby-doc.org/stdlib-2.7.1/libdoc
+/net/http/rdoc/index.html			- net/http: Ruby Standard Library Documentation
+
+https://ruby-doc.org/stdlib-2.7.0/libdoc
+/net/http/rdoc/Net/HTTP.html			- Net::HTTP
+
+www.w3schools.com/html/html5_webstorage.asp	- webstorage
+
+http://stackoverflow.com/questions
+/3138564/looping-through-localstorage-
+in-html5-and-javascript				- looping through localstorage
+
+https://www.ruby-forum.com/topic/151660/	- ruby-forum
+
+https://stackoverflow.com/questions
+/19607851/use-bootstrap0grid0with-
+variable-number-of-ceils			- variable number of ceils
+
+http://guides.rubyonrails.org
+/active_record_quering.html			- active record quering
+
+https://habrahabr.ru/post/125999/		- post
+
+https://github.com/ro31337/rubyschool
+/blob/master/README.md				- rubyschool plan of lessons
+
+https://github.com/ro31337/rubyschool
+/blob/master/HOMEWORK.md			- rubyschool homeworks
+
+https://github.com/krdprog/rubyschool-notes	- homework rubyschool
+https://github.com/ro31337			- Roman Pushkin
+
+https://docs.ruby-lang.org/en/2.0.0/index.html	- ruby 2.0 documentation
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HTTP:
+-----
+
+https://en.wikipedia.org/wiki
+/List_of_HTTP_status_codes			- List of HTTP status codes
+
+https://www.codecademy.com/articles
+/rebrandly-signup				- Rebrandly URL Shortener API
+
+https://www.codecademy.com/articles
+/http-requests					- HTTP Requests
+
+https://developer.mozilla.org/en-US
+/docs/Web/API/Fetch_API				- Fetch API
+
+https://developer.mozilla.org/en-US
+/docs/Web/HTTP/Methods				- HTTP request methods
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+XML:
+----
+
+https://developer.mozilla.org/en-US
+/docs/Web/XML/XML_introduction			- XML introduction
+
+https://www.xml.com/				- Foundations
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HOSTING:
+--------
+
+https://www.namecheap.com/hosting
+/how-to-set-up-hosting-account
+/?utm_source=ubersmith&utm_
+medium=email&utm_content=link_
+startguide&utm_campaign=hostsharedwelcomev3 	- Building Your Website
+
+https://www.namecheap.com/hosting/shared
+/?clickID=UQ7U%3AtUV2xy
+OWLpwUx0Mo3ERUki2kVXcP2CtxA0&irgwc=
+1&utm_source=IR&utm_
+medium=Affiliate&utm_
+campaign=1356525&affnetwork=ir&ref=ir 		- Shared Hosting
+
+https://codecademy.namecheap.com/		- Namecheap x Codecademy
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+GIT:
+----
+
+http://gearmobile.github.io/gulp/gitignore/	- .gitignore
+
+https://help.github.com/en
+/github/using-git
+/pushing-commits-to-a-remote-repository 	- Pushing commits to a remote repository
+
+https://www.codecademy.com/learn/paths
+/web-development/tracks/learn-git/modules
+/learn-git-git-workflow-u/cheatsheet 		- Basic Git Workflow
+
+https://losst.ru
+/kak-polzovatsya-git-dlya-nachinayushhih#i	- КАК ПОЛЬЗОВАТЬСЯ GIT ДЛЯ НАЧИНАЮЩИХ
+
+https://rightblog.ru/3274			- Основные команды консоли Git Bash
+https://pages.github.com/			- What is GitHub Pages?
+
+https://help.github.com/en/github
+/authenticating-to-github
+/creating-a-personal-access-token-
+for-the-command-line 				- Creating a personal access token for the command line
+
+https://proglib.io/p/git-for-half-an-hour/	- Git за полчаса
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SINATRA:
+--------
+
+https://github.com/sinatra/sinatra		- sinatra
+
+https://github.com/sinatra/sinatra
+/blob/master/README.ru.md			- Sinatra docs
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PLUGINS:
+--------
+
+https://xdsoft.net/jqplugins/datetimepicker/	- DateTimePicker
+https://github.com/xdan/datetimepicker		- jQuery DateTimePicker
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ATOM:
+-----
+
+https://atom.io/packages/atom-runner		- Atom Runner
+
+https://www.codecademy.com/paths
+/web-development/tracks/styling-a-website
+/modules/local-website-development/articles
+/f1-text-editors 				- Getting Started with Atom
+
+https://atom.io/				- A hackable text editor for the 21st Century
+
+https://svoywebsayt.ru/effective-work
+/instruments/textovye-redactory
+/atom-tekstovyj-redaktor-2-menyu-i-interfejs	- Atom menu list
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+NPM:
+----
+
+https://docs.npmjs.com/about-npm/index.html	- About npm
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

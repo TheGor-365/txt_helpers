@@ -1,0 +1,119 @@
+-------
+DOCKER:
+-------
+
+
+
+docker --version                                                                            --- docker version
+docker run -i -t ubuntu /bin/bash                                                           --- run ubuntu image
+docker ps                                                                                   --- see started containers
+docker ps -a                                                                                --- see stoped containers
+
+docker-compose up                                                                           --- run services from docker-compose.yml
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+docker pull                                                                                 --- pull images from the docker repository
+docker exec                                                                                 --- access the running container
+docker stop                                                                                 --- stops a running container
+docker kill                                                                                 --- kills the container by stopping its execution immediately
+docker commit                                                                               --- creates a new image of an edited container on the local system
+docker login                                                                                --- log in
+docker push                                                                                 --- push an image to the docker hub repository
+docker images                                                                               --- lists all the locally stored docker images
+docker rm                                                                                   --- delete a stopped container
+docker rmi                                                                                  --- delete an image from local storage
+docker build                                                                                --- build an image from a specified docker file
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

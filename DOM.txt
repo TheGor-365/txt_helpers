@@ -1,0 +1,2247 @@
+DOM:
+
+Tweak an Element:
+
+.innerHTML
+
+document.body.innerHTML = '<h2>This is a heading</h2>'; 
+
+---
+
+
+<html>	
+	<head>
+		<title>The title</title>
+    
+	</head>
+
+	<body>
+		<h1>The heading</h1>
+		<div>
+			<p>
+				A description
+			</p>
+			<p id="bio" style="color:blue">
+				A summary
+			</p>
+		</div>
+	</body>
+  		<script src="./main.js"></script>
+</html>
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Select and Modify Elements:
+
+.querySelector():
+.getElementByID()
+
+document.querySelector('p');
+
+document.getElementById('bio').innerHTML = 'The description';
+
+---
+
+
+document.querySelector('h1').innerHTML = "Most popular TV show searches in 2016";
+
+document.getElementById('fourth').innerHTML = "Fourth element";
+
+---
+
+
+<html>	
+	<head>
+		<title>Popular Google Searches</title>
+	</head>
+
+	<body>
+    <h1>Top 5 most searcheed TV shows in 2016</h1>
+    <ol>
+      <li id="first">Stranger Things</li>
+      <li id="second">Westworld</li>
+      <li id="third">Luke Cage</li>
+      <li id="fourth">Game of Thrones</li>
+      <li id="fifth">Black Mirror</li>
+		</ol> 
+    
+	</body>
+  <script src="./main.js"></script>
+</html>
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Style an element:
+
+element.style.property
+
+---
+
+
+let blueElement = document.querySelector('.blue');
+blueElement.style.backgroundColor = 'blue';
+
+---
+
+
+document.querySelector('.blue').style.fontFamily = 'Roboto';
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Create and Insert Elements:
+
+.createElement(tagName)
+.appendChild()
+
+---
+
+
+let paragraph = document.createElement('p');
+
+paragraph.id = 'info'; 
+
+paragraph.innerHTML = 'The text inside the paragraph';
+
+document.body.appendChild(paragraph);
+
+---
+
+
+let newDestination = document.createElement('li');
+
+newDestination.id = 'oaxaca';
+
+newDestination.innerHTML = 'Oaxaca, Mexico';
+
+document.getElementById('more-destinations').appendChild(newDestination);
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Remove an Element:
+
+.removeChild()
+.querySelector()
+
+---
+
+
+let paragraph = document.querySelector('p');
+document.body.removeChild(paragraph);
+
+---
+
+
+document.getElementById('sign').hidden = true;
+
+---
+
+
+const parent = document.querySelector("#more-destinations");
+
+const child = document.querySelector("#oaxaca");
+
+parent.removeChild(child);
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Interactivity with onclick:
+
+.onclick
+
+---
+
+
+let element = document.getElementById('interact');
+element.onclick = function() { element.style.backgroundColor = 'blue' };
+
+---
+
+
+let element = document.querySelector("button");
+
+function turnButtonRed (){
+	element.style.backgroundColor = "red";
+  element.style.color = "white";
+  element.innerHTML = "Red Button"; 
+}
+
+element.onclick = turnButtonRed;
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Traversing the DOM:
+
+.parentNode
+.children
+.firstChild
+
+---
+
+
+let first = document.body.firstChild;
+
+first.innerHTML = 'I am the child!';
+
+first.parentNode.innerHTML = 'I am the parent and my inner HTML has been replaced!';
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+document - ключевое слово предоставляет доступ к корню DOM в JavaScript
+.querySelector() - выбрать определенный элемент с помощью CSS-селекторов
+.getElementById() - получить доступ к элементу непосредственно по его идентификатору
+.innerHTML, .style - свойства позволяют изменять элемент путем изменения его содержания или стиля соответственно
+.createElement(), .appendChild(), .removeChild() - создавать, добавлять и удалять элементы
+.onclick - может добавить интерактивности к DOM-элементу, основанные на событие click
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Game:
+
+let doorImage1 = document.getElementById('door1');
+let doorImage2 = document.getElementById('door2');
+let doorImage3 = document.getElementById('door3');
+
+let startButton = document.getElementById('start');
+
+let botDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/robot.svg";
+let beachDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/beach.svg";
+let spaceDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/space.svg";
+let closedDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/closed_door.svg";
+
+let numCloseDoors = 3;
+
+let currentlyPlaying = true;
+
+let openDoor1;
+let openDoor2;
+let openDoor3;
+
+const isBot = (door) => {
+  if(door.src === botDoorPath) {
+    return true;
+  } else {
+    return false;
+}
+
+const isClicked = (playDoor) => {
+  if (door.src === closedDoorPath) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+const playDoor = (door) => {
+  numCloseDoors--;
+  if (numCloseDoors === 0) {
+    gameOver('win');
+  } else if (isBot(door)) {
+    gameOver('lose');
+  }
+}
+
+const randomChoreDoorGenerator = () => {
+  const choreDoor = Math.floor(Math.random() * numCloseDoors);
+  if (choreDoor === 0) {
+    openDoor1 = botDoorPath;
+    openDoor2 = beachDoorPath;
+    openDoor3 = spaceDoorPath;
+  } else if (choreDoor ===1) {
+    openDoor2 = botDoorPath;
+    openDoor1 = beachDoorPath;
+    openDoor3 = spaceDoorPath;
+  } else if (choreDoor === 2) {
+    openDoor3 = botDoorPath;
+    openDoor1 = beachDoorPath;
+    openDoor2 = spaceDoorPath;
+  }
+}
+
+door1.onclick = () => {
+  if(currentlyPlaying && !isClicked(doorImage1)) {
+  doorImage1.src = openDoor1;
+  playDoor(door1);
+  }
+}
+
+door2.onclick = () => {
+  if(currentlyPlaying && !isClicked(doorImage2)) {
+  doorImage2.src = openDoor2;
+  playDoor(door2);
+  }
+}
+
+door3.onclick = () => {
+  if(currentlyPlaying && !isClicked(doorImage3)) {
+  doorImage3.src = openDoor3;
+  playDoor(door3);
+  }
+}
+
+startButton.onclick = () => {
+  if(!currentlyPlaying) {
+    startRound();
+  }
+}
+
+const startRound = () => {
+  door1.src = closeDoorPath;
+  door2.src = closeDoorPath;
+  door3.src = closeDoorPath;
+  numberCloseDoors = 3;
+  currentlyPlaying = true;
+  startButton.innerHTML = 'Good luck!';
+  randomChoreDoorGenerator();
+}
+
+const gameOver = (status) => {
+  if (status === 'win') {
+    startButton.innerHTML = 'You win! Play again?';
+  } else {
+    startButton.innerHTML = 'Game over! Play again?';
+  }
+  currentlyPlaying = false;
+}
+
+startRound();
+
+---
+
+
+body {
+  background-color: #010165;
+  margin: 0px;
+}
+
+.header {
+  background-color: #00ffff;
+  text-align: center;
+}
+
+.title-row {
+  margin-top: 42px;
+  margin-bottom: 21px;
+  text-align: center;
+}
+
+.instructions-title {
+  display: inline;
+  font-size: 18px;
+  color: #00ffff;
+  font-family: 'Work Sans';
+}
+
+.instructions-row {
+  margin: 0 auto;
+  width: 400px;
+}
+
+.instructions-number {
+  padding-right: 25px;
+  font-family: 'Word Sans';
+  font-size: 36px;
+  color: #00ffff;
+}
+
+.instructions-text {
+  padding: 10px;
+  font-family: 'Word Sans';
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.door-row {
+  text-align: center;
+}
+
+.door-frame {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.start-row {
+  margin: auto;
+  width: 120px;
+  height: 43px;
+  font-family: 'Work Sans';
+  background-color: #eb6536;
+  padding-top: 18px;
+  font-size: 18px;
+  text-align: center;
+  color: #010165;
+  margin-bottom: 21px;
+  cursor: pointer;
+}
+
+---
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chore Door!</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div class="header">
+      <img id="" class="" src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/logo.svg">
+    </div>
+    <div class="title-row">
+      <img id="" class="" src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/star.svg">
+      <p class="instructions-title">Instructions</p>
+      <img id="" class="" src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/star.svg">
+    </div>
+    <table class="instructions-row">
+      <tr>
+        <td class="instructions-number">1</td>
+        <td class="instructions-text">Hiding behind one of these doors is the ChoreBot.</td>
+      </tr>
+      <tr>
+        <td class="instructions-number">2</td>
+        <td class="instructions-text">Your mission is to open all of the doors without running into the ChoreBot.</td>
+      </tr>
+      <tr>
+        <td class="instructions-number">3</td>
+        <td class="instructions-text">If you manage to avoid the ChoreBot until you open the very last door, you win!</td>
+      </tr>
+      <tr>
+        <td class="instructions-number">4</td>
+        <td class="instructions-text">See if you can score a winning streak!</td>
+      </tr>
+    </table>
+    <div class="door-row">
+      <img id="door1" class="door-frame" src="https://s3.amazonaws.com
+/codecademy-content/projects/chore-door/images/closed_door.svg">
+      <img id="door2" class="door-frame" src="https://s3.amazonaws.com
+/codecademy-content/projects/chore-door/images/closed_door.svg">
+      <img id="door3" class="door-frame" src="https://s3.amazonaws.com
+/codecademy-content/projects/chore-door/images/closed_door.svg">
+    </div>
+    <div id="start" class="start-row">
+      Good luck!
+    </div>
+  </body>
+  <script type="text/javascript" src="script.js">
+  </script>
+</html>
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+DOM EVENTS WITH JAVASCRIPT:
+
+Event Handler Registration:
+
+let eventTarget = document.getElementById('targetElement');
+
+eventTarget.onclick = function() {
+  // this block of code will run
+}
+
+---
+
+
+let readMore = document.getElementById('read-more')
+let moreInfo = document.getElementById('more-info')
+
+readMore.onclick = function() {
+  moreInfo.style.display = 'block';
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Adding Event Handlers:
+
+let view = document.getElementById('view-button');
+let close = document.getElementById('close-button');
+let margo = document.getElementById('margo');
+
+let open = function() {
+  margo.style.display = 'block';
+  close.style.display = 'block';
+};
+
+let hide = function() {
+  margo.style.display = 'none';
+  close.style.display = 'none';
+};
+
+view.onclick = open;
+close.onclick = hide;
+
+let textChange = function() {
+  view.innerHTML = 'Hello, World!';
+}
+let textReturn = function() {
+  view.innerHTML = 'View';
+}
+
+view.addEventListener('click', textChange);
+close.addEventListener('click', textReturn);
+
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+
+<body>
+  <section id='container'>
+  <button id='view-button'>View</button>
+  <img src="https://s3.amazonaws.com/codecademy-content/courses/javascript-dom-events/Margot_medal.svg" id='margo'>
+  <button id='close-button'>Close</button>
+</section>
+  
+  <script  src="main.js"></script>
+
+</body>
+</html>
+
+---
+
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito';
+}
+#container{
+  background: #141c3a;
+  margin: 0;
+  display: block;
+  float: left;
+  width: 100vw;
+  height: 100vh;
+}
+#view-button{
+  width: 380px;
+  height: 50px;
+  font-size: 24px;
+  border: none;
+  display: block;
+  background-color: #6df0c2;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: 'Nunito';
+}
+#margo{
+  display: none;
+  width: 200px;
+  margin: 0 auto;
+}
+#close-button{
+  width: 380px;
+  height: 50px;
+  font-size: 24px;
+  border: none;
+  display: none;
+  background-color: #fd4d3f;
+  margin: 0 auto;
+  margin-top: 20px;
+  cursor: pointer;
+  font-family: 'Nunito';
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Removing Event Handlers:
+
+eventTarget.removeEventListener('click', eventHandlerFunction);
+
+---
+
+
+eventTarget.addEventListener('event', function() {
+  target.removeEventListener('event', eventHandlerFunction);
+});
+
+---
+
+
+let door = document.getElementById('door');
+let unlock = document.getElementById('unlock');
+let lock = document.getElementById('lock');
+let sign = document.getElementById('sign');
+let cafeImage = document.getElementById('image');
+
+cafeImage.hidden = true;
+
+let openDoor = function() {
+  door.hidden = true;
+  cafeImage.hidden = false;
+}
+
+let closeDoor = function(){
+  door.hidden = false;
+  cafeImage.hidden = true;
+}
+
+unlock.onclick = function() {
+  sign.innerHTML = 'OPEN';
+  unlock.style.backgroundColor = '#6400e4';
+  lock.style.backgroundColor = 'lightgray';
+}
+
+lock.onclick = function() {
+  sign.innerHTML = 'CLOSED';
+  lock.style.backgroundColor = '#6400e4';
+  unlock.style.backgroundColor = 'lightgray';
+}
+
+unlock.addEventListener('click', function(){
+  door.addEventListener('click', openDoor);
+  cafeImage.addEventListener('click', closeDoor);
+})
+
+lock.addEventListener('click', function(){
+  door.removeEventListener('click', openDoor)
+})
+
+---
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+
+<body>
+  <section id='container'>
+    <button id='unlock'><svg style="width:34px;height:34px" viewBox="0 0 24 24">
+      <path fill="#fff" d="M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10A2,2
+ 0 0,1 6,8H15V6A3,3 0 0,0 12,3A3,3 0 0,0 9,6H7A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,17A2,2 0 0,1 10,15A2,2 0 0,1
+ 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12,17Z" />
+  </svg></button>
+    <button id='lock'>
+      <svg style="width:34px;height:34px" viewbox="0 0 24 24">
+      <path fill="#fff" d="M12,17C10.89,17 10,16.1 10,15C10,13.89 10.89,13 12,13A2,2 0 0,1 14,15A2,2 0 0,1 12
+,17M18,20V10H6V20H18M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10C4,8.89 4.89,8 6,8H7V6A5,5 0 0
+,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+  </svg>
+    </button>
+    <img src='https://s3.amazonaws.com/codecademy-content/courses/javascript-dom-events/cafe_door.png' id='image'>
+    <section id='door'>
+      <section class="door-knob"></section>
+      <section class='top-square'>
+        <section id='sign'>OPEN</section>
+      </section>
+      <section class="bottom-square"></section>
+    </section>
+  </section>
+  
+  <script  src="main.js"></script>
+</body>
+</html>
+
+---
+
+
+ body{
+  background-color: #141c3a;
+}
+#container{
+  width: 300px;
+  height: 100%;
+  margin: 0 auto;
+}
+button{
+  background-color: lightgray;
+  border: none;
+  margin: 5px;
+  width: 115px;
+}
+#door{
+  background: #efd9ca;
+  width: 250px;
+  height: 530px;
+  padding: 15px 0px 10px 0px;
+}
+div{
+  width: 250px;
+  height: 525px;
+  background-color: blue;
+  position: absolute;
+  z-index: 999;
+}
+.door-knob{
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: #ffc63f;
+  position: relative;
+  top: 275px;
+  left: 220px;
+}
+.top-square{
+  width: 200px;
+  height: 240px;
+  border: 2px solid tan;
+  display: block;
+  margin: 0 auto;
+}
+.bottom-square{
+  width: 200px;
+  height: 200px;
+  border: 2px solid tan;
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+#sign{
+  width: 120px;
+  height: 30px;
+  background-color: white;
+  border: solid  #fd4d3f 3px;
+  font-size: 24px;
+  font-family: 'Nunito';
+  text-align: center;
+  color: #fd4d3f;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Event Object Properties:
+
+.target - свойство для доступа к элементу, вызвавшему событие
+.type - свойство для доступа к имени события
+.timeStamp - свойство для доступа к количеству миллисекунд, прошедших с момента загрузки документа и запуска события
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+let social = document.getElementById('social-media');
+let share = document.getElementById('share-button');
+let text = document.getElementById('text');
+
+let sharePhoto = function(event) {
+  event.target.style.display = 'none';
+  text.innerHTML = 'You share the puppy in ' 
+  + event.timeStamp + ' ms.';
+}
+
+share.onclick = sharePhoto;
+
+---
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+
+<body>
+  <p id='text'>Share this cute puppy photo with your friends!</p>
+  <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=
+3f6f7c47a2be772ea983ee9215ab08d8&auto=format&fit=crop&w=678&q=80" alt="Cute Puppy">
+  <div class='share-container'>
+  <section id='social-media'>
+    <button id="email" class='social-button'><svg style="width:44px;height:44px" viewBox="0 0 24 24">
+      <path fill="#141c3a" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0
+ 22,18V6C22,4.89 21.1,4 20,4Z" />
+  </svg></button>
+    <button id="facebook" class='social-button'>
+      <svg style="width:44px;height:44px" viewBox="0 0 24 24">
+      <path fill="#0069ff" d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M18,5H15.5A3.5,3.5
+ 0 0,0 12,8.5V11H10V14H12V21H15V14H18V11H15V9A1,1 0 0,1 16,8H18V5Z" />
+  </svg>
+    </button>
+    <button id="twitter" class='social-button'>
+      <svg style="width:44px;height:44px" viewBox="0 0 24 24">
+      <path fill="#00a9ff" d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16
+ 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,
+7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10
+ 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16
+ 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21
+ 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
+  </svg>
+    </button>
+    <button id="pinterest" class='social-button'><svg style="width:44px;height:44px" viewBox="0 0 24 24">
+      <path fill="#fd4d3f" d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H9.29C9.69,20.33 10.19,19.38 10.39,18.64L11.05
+,16.34C11.36,16.95 12.28,17.45 13.22,17.45C16.17,17.45 18.22,14.78 18.22,11.45C18.22,8.28 15.64,5.89 12.3,5.89C8.14,5.89
+ 5.97,8.67 5.97,11.72C5.97,13.14 6.69,14.89 7.91,15.45C8.08,15.56 8.19,15.5 8.19,15.34L8.47,14.28C8.5,14.14 8.5,14.06
+ 8.41,14C7.97,13.45 7.69,12.61 7.69,11.78C7.69,9.64 9.3,7.61 12.03,7.61C14.42,7.61 16.08,9.19 16.08,11.5C16.08,14.11
+ 14.75,15.95 13.03,15.95C12.05,15.95 11.39,15.11 11.55,14.17C11.83,13.03 12.39,11.83 12.39,11C12.39,10.22 12,9.61
+ 11.16,9.61C10.22,9.61 9.39,10.61 9.39,11.95C9.39,12.83 9.66,13.39 9.66,13.39L8.55,18.17C8.39,19 8.47,20.25 8.55,21H5A2,2
+ 0 0,1 3,19V5A2,2 0 0,1 5,3Z" />
+  </svg></button>
+</section>
+  <button id='share-button'>Share</button>
+</div>
+  
+  <script  src="main.js"></script>
+
+</body>
+</html>
+
+---
+
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #141c3a;
+  color: white;
+}
+p{
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+img{
+  width: 250px;
+  display: block;
+  margin: 0 auto;
+}
+.share-container{
+  width: 300px;
+  height: 75px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 50%);
+}
+#share-button{
+  width: 300px;
+  height: 75px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  font-size: 24px;
+  background-color: #ffcd3f;
+  letter-spacing: 1px;
+  color: #141c3a;
+  border-radius: 30px;
+  position: relative;
+  top: -75px;
+  font-family: 'Nunito', sans-serif;
+}
+#social-media{
+  width: 300px;
+  height: 75px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  background-color: white;
+  border-radius: 30px;
+  position: relative;
+}
+.social-button{
+  border: none;
+  background: transparent;
+  padding: 0px;
+  margin: 15px 14px;
+}
+
+---
+
+
+console.log = function() {};
+const { assert } = require('chai');
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    let structureOne = function() {
+			text
+    };
+    let structureTwo = function() {
+			text.innerHTML
+    };
+
+    let isMatchOne = Structured.match(code, structureOne);
+    let isMatchTwo = Structured.match(code, structureTwo);
+    
+    assert.isOk(isMatchOne , 'Did you access the `.innerHTML` of the `text`	element?');
+    assert.isOk(isMatchTwo , 'Did you change the text by assigning a string featuring the `.timeStamp` property to the
+ `text`	element with the `.innerHTML` property?');
+
+  });
+});
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Event Types:
+
+let button = document.getElementById('color-button');
+
+let mysteryButton = document.getElementById('next-button');
+
+function rgb(num) {
+  return Math.floor(Math.random() * num);
+}
+
+let colorChange = function (event) {
+  let randomColor = 'rgb(' + rgb(255) + ',' + rgb(255) + ',' + rgb(255) + ')';
+  event.target.style.backgroundColor = randomColor;
+}
+
+button.onclick = colorChange;
+mysteryButton.onwheel = colorChange;
+
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+
+<body>
+  <section id='container'>
+    <img src='http://pngimg.com/uploads/rainbow/rainbow_PNG5580.png'/>
+    <h1>Random Color Generator</h1>
+    <p>Find your new favorite color!</p>
+    <button id='color-button'>Pick a Color</button>
+    <button id='next-button'>Mystery Color</button>
+  </section>
+ <script  src="main.js"></script>
+
+</body>
+</html>
+
+---
+
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito';
+}
+img{
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+#container{
+  margin: 0;
+  width: 100vw;
+  height: 600px;
+  background: #fd4d3f;
+  margin: 0 auto;
+}
+h1{
+  font-size: 30px;
+  width: 450px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  color: #141c3a;
+}
+p{
+  font-size: 20px;
+  width: 400px;
+  text-align: center;
+  font-weight: 400;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  color: white;
+}
+#color-button{
+  width: 350px;
+  height: 100px;
+  border: none;
+  font-size: 24px;
+  background-color: #141c3a;
+  color: white;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-family: 'Nunito';
+
+}
+#next-button{
+  width: 350px;
+  height: 100px;
+  border: none;
+  font-size: 24px;
+  background-color: #141c3a;
+  color: white;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Nunito';
+}
+
+---
+
+
+console.log = function() {};
+const { assert } = require('chai');
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    let structureOne = function() {
+      let randomColor = 'rgb(' + rgb(255) + ',' + rgb(255) + ',' + rgb(255) + ')';
+    };
+    
+    let isMatchOne = Structured.match(code, structureOne);
+
+    assert.isOk(isMatchOne , 'Did you add the `randomColor` variable and value to the first line of the `colorChange` function?');
+  });
+});
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Mouse Events:
+
+mousedown - событие срабатывает, когда пользователь нажимает кнопку мыши вниз, не нужно, 
+чтобы кнопка мыши была отпущена, чтобы стрелять
+mouseup - событие запускается, когда пользователь отпускает кнопку мыши
+mouseover - событие срабатывает, когда мышь входит в содержимое элемента
+mouseout - событие срабатывает, когда мышь покидает элемент
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+let itemOne = document.getElementById('list-item-one');
+let itemTwo = document.getElementById('list-item-two');
+let itemThree = document.getElementById('list-item-three');
+let itemFour = document.getElementById('list-item-four');
+let itemFive = document.getElementById('list-item-five');
+let resetButton = document.getElementById('reset-button');
+
+let reset = function() {
+  itemOne.style.width = ''
+  itemTwo .style.backgroundColor = ''
+  itemThree.innerHTML = 'The mouse must leave the box to change the text'
+  itemFive.style.display = "none"
+};
+resetButton.onclick = reset;
+
+itemOne.onmouseover = function(){
+  itemOne.style.width = '430px';
+};
+
+itemTwo.onmouseup = function(){
+  itemTwo.style.backgroundColor = 'green'
+};
+
+itemThree.onmouseout = function(){
+  itemThree.innerHTML = 'The mouse has left the element.'
+};
+
+itemFour.onmousedown = function(){
+  itemFive.style.display = 'block';
+};
+
+---
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+
+<body>
+  <section id='container'>
+    <ul>
+        <li id='list-item-one'>The mouse must pass over to increase the box width</li>
+        <li id='list-item-two'>Release the mouse button to change the color</li>
+        <li id='list-item-three'>The mouse must leave the box to change the text</li>
+        <li id='list-item-four'>Click the mouse to make the fifth box appear</li>
+        <li id='list-item-five'>You found me!</li>
+        <button id='reset-button'>Reset</button>
+    </ul>
+  </section>
+  
+  <script  src="main.js"></script>
+</body>
+</html>
+
+---
+
+
+body{
+  margin: 0;
+  padding: 0;
+  background: green;
+  font-family: 'Nunito';
+}
+#container{
+  background: #efd9ca;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  float: left;
+}
+li, #list-item-one, #list-item-two , #list-item-three, #list-item-four, #list-item-five{
+  width: 400px;
+  height: 17px;
+  list-style: none;
+  background-color: #141c3a;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 16px;
+  padding: 17px 0px;
+  color: #efd9ca;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Nunito';
+}
+#list-item-five{
+  display: none;
+}
+#reset-button{
+  width: 400px;
+  height: 50px;
+  background: #fd4d3c;
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 16px;
+  padding: 17px 0px;
+  color: #141c3a;
+  font-weight: bold;
+  display: block;
+  cursor: pointer;
+  font-family: 'Nunito';
+}
+
+---
+
+
+console.log = function() {};
+const { assert } = require('chai');
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    let structureOne = function() {
+      itemOne.onmouseover
+    };
+    
+    let isMatchOne = Structured.match(code, structureOne);
+
+    assert.isOk(isMatchOne, 'Did you create an event handler property with the `mouseover` event type on `itemOne`?');
+
+  });
+});
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Keyboard Events:
+
+keydown - событие запускается, когда пользователь нажимает клавишу вниз
+keyup - событие запускается, когда пользователь отпускает ключ
+keypress - событие запускается, когда пользователь нажимает клавишу вниз и отпускает ее
+.key - сохраняет значения клавиши, нажатой пользователем
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+let ball = document.getElementById('float-circle');
+
+let up = function() {
+  ball.style.bottom = '250px';
+};
+let down = function() {
+  ball.style.bottom = '50px';  
+};
+
+document.onkeydown = up;
+document.onkeyup = down;
+
+---
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id='container'>
+    <h1>Ball Bounce</h1>
+    <p>Let's dribble the ball on the platform using any key on your keyboard. Hold a key down to lift the ball,
+ then release the key to drop the ball.</p>
+    <!--<button id='button'>Reset</button>-->
+    <div id='float-circle'></div> 
+    <div id='platform'></div>
+    <div id='floor'></div>
+  </div>
+  
+  <script  src="main.js"></script>
+
+</body>
+</html>
+
+---
+
+
+body{
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+#container{
+  background: #6400e4;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  float: left;
+}
+h1{
+  font-size: 30px;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  color: #141c3a;
+}
+p{
+  font-size: 18px;
+  width: 60%;
+  text-align: center;
+  font-weight: 400;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  color: white;
+}
+button{
+  width: 150px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  font-size: 18px;
+  color: white;
+  background: #141c3a;
+}
+#float-circle{
+  width: 100px;
+  height: 100px;
+  background: #fd4d3f;
+  border-radius: 100px;
+  bottom: 50px;
+  left: 50%;
+  position: absolute;
+}
+#floor{
+  width: 100%;
+  height: 30px;
+  background: #6df0c2;
+  bottom: 0;
+  position: absolute;
+}
+#platform{
+  width: 100px;
+  height: 50px;
+  background: #efd9ca;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+}
+
+---
+
+
+console.log = function() {};
+const { assert } = require('chai');
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+    let structureOne = function() {
+      let down
+    };
+    let structureTwo = function() {
+      let down = function() {
+      }
+    };
+    let structureThree = function() {
+      let down = function() {
+        ball
+      }
+    };
+    let structureFour = function() {
+      let down = function() {
+        ball.style
+      }
+    };
+    let structureFive = function() {
+      let down = function() {
+        ball.style.bottom
+      }
+    };
+    let structureSix = function() {
+      let down = function() {
+        ball.style.bottom = '50px';
+      };
+    };
+    
+    let structureSeven = function() {
+      const down
+    };
+    let structureEight = function() {
+      const down = function() {
+      }
+    };
+    let structureNine = function() {
+      const down = function() {
+        ball
+      }
+    };
+    let structureTen = function() {
+      const down = function() {
+        ball.style
+      }
+    };
+    let structureEleven = function() {
+      const down = function() {
+        ball.style.bottom
+      }
+    };
+    let structureTwelve = function() {
+      const down = function() {
+        ball.style.bottom = '50px';
+      };
+    };
+    
+    let isMatchOne = Structured.match(code, structureOne);
+    let isMatchTwo = Structured.match(code, structureTwo);
+    let isMatchThree = Structured.match(code, structureThree);
+    let isMatchFour = Structured.match(code, structureFour);
+    let isMatchFive = Structured.match(code, structureFive);
+    let isMatchSix = Structured.match(code, structureSix);
+    let isMatchSeven = Structured.match(code, structureSeven);
+    let isMatchEight = Structured.match(code, structureEight);
+    let isMatchNine = Structured.match(code, structureNine);
+    let isMatchTen = Structured.match(code, structureTen);
+    let isMatchEleven = Structured.match(code, structureEleven);
+    let isMatchTwelve = Structured.match(code, structureTwelve);
+
+    assert.isOk(isMatchOne, 'Did you create a variable named `down`?');
+    assert.isOk(isMatchTwo, 'Did you assign a function to the `down` variable?');
+    assert.isOk(isMatchThree, 'Did you call the `ball` element in the `down` function?');
+    assert.isOk(isMatchFour, 'Did you access the `.style` property of the `ball` element?');
+    assert.isOk(isMatchFive, 'Did are you modifying the `bottom` style property of the `ball` element?');
+    assert.isOk(isMatchSix, 'Did set the `bottom` property of the `ball` element equal to `\'50\'`?');
+    assert.isOk(isMatchSeven, 'Did you create a variable named `down`?');
+    assert.isOk(isMatchEight, 'Did you assign a function to the `down` variable?');
+    assert.isOk(isMatchNine, 'Did you call the `ball` element in the `down` function?');
+    assert.isOk(isMatchTen, 'Did you access the `.style` property of the `ball` element?');
+    assert.isOk(isMatchEleven, 'Did are you modifying the `bottom` style property of the `ball` element?');
+    assert.isOk(isMatchTwelve, 'Did set the `bottom` property of the `ball` element equal to `\'50\'`?');
+
+  });
+});
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+.target, .type, .timeStamp - используются для предоставления информации о событии
+.addEventListener() - метод может использоваться для добавления нескольких 
+функций обработчика событий в одно событие
+.removeEventListener() - метод останавливает определенные обработчики событий от 
+“прослушивания " для запуска определенных событий
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Handlebars.js:
+
+Добавить библиотеку руль к вашему проекту. — одним из вариантов является использование сети 
+доставки контента (CDN): MDN CDN documentation.
+Создать скрипт рули в HTML-файл.
+В вашем файле JavaScript возьмите HTML, хранящийся в скрипте Handlebars.
+Используйте Handlebars.compile() возвращает шаблонную функцию.
+Передайте context объект контекста в функцию templating, чтобы получить скомпилированный шаблон.
+Визуализируйте скомпилированный шаблон на веб-странице.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ice Scream</title>
+    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script id="ice-cream" type="text/x-handlebars-template">
+      <h2>Why {{flavor}} is the best</h2>
+      <p>
+        It is without a doubt that {{flavor}} is the best ice cream flavor in the world. If it was left to me,
+ I would have {{flavor}} ice cream all year round. The next time I get ice cream, I will be getting {{flavor}}
+ because why get something else when when you can get the best.
+      </p>
+    </script>
+  </head>
+  <body>
+    <div class="bg">
+      <img class="bg-ice-cream" src="https://s3.amazonaws.com/codecademy-content/courses/learn-handlebars/handlebars+intro.svg">
+    </div>
+    <div class="container">
+      <div class="text-box">
+        <h2 id="title">
+          iScream
+        </h2>
+        <div id="scream">
+        </div>
+      </div>
+    </div>
+    <script src="public/main.js" type="text/javascript"></script>
+  </body>
+</html>
+
+---
+
+
+const source = document.getElementById('ice-cream').innerHTML;
+
+const template = Handlebars.compile(source);
+
+const context = {
+  flavor: 'chocolate'
+};
+
+const compiledHtml = template(context);
+
+const iceCreamText = document.getElementById('scream');
+iceCreamText.innerHTML = compiledHtml;
+
+---
+
+
+* {
+    font-family: Helvetica;
+}
+
+body {
+  position: relative;
+  background-color: rgb(144, 206, 237);
+  margin: 0;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-ice-cream {
+  width: 120%;
+}
+
+.container {
+  position: absolute;
+  z-index: 100;
+}
+
+@media screen and (max-width: 450px){
+  h2 {
+    font-size: 1em;
+  }
+  
+  .bg-ice-cream {
+    width: 540px;
+  }
+  
+  .text-box {
+    border-radius: 10px;
+    background: rgb(255, 255, 255, 0.7);
+    width: 80%;
+    margin: 10% auto;
+    padding: 5% 0;
+  }
+  
+  #title {
+    font-size: 1em;
+    margin: 0 auto;
+    text-align: center;
+    width: 25%;
+  }
+
+  #scream {
+    margin: 0 auto;
+    text-align: center;
+    width: 60%;
+  }    
+}
+
+
+@media screen and (min-width: 451px){
+  #title {
+    margin: 15% auto 0 auto;
+    text-align: center;
+    width: 25%;
+    color: #fff;
+  }
+
+  #scream {
+    margin: 0 auto;
+    text-align: center;
+    width: 60%;
+    color: #fff;
+  }    
+}
+
+---
+
+
+console.log = function() {};
+const assert = require('chai').assert;
+const fs = require('fs');
+const Structured = require('structured');
+
+const code = fs.readFileSync('public/main.js', 'utf8');
+
+describe('', function () {
+  it('', function() {
+
+    let structureOne = function() {
+      let context = {
+        flavor: $flavor
+      }
+    };
+
+    varCallbacks = [
+      function($flavor){
+        if ($flavor.value === 'vanilla'){
+          return {failure: 'Did you re-assign the flavor property of `context`?'}
+        }
+        if ($flavor.value !== 'chocolate'){
+          return {failure: 'Did you re-assign the value of the `flavor` property of `context` to `\'chocolate\'`?'}
+        }
+        return true
+      }
+    ]
+
+    let isMatchOne = Structured.match(code, structureOne, { varCallbacks });
+
+    assert.isOk(isMatchOne, varCallbacks.failure || 'Did you assign the value of the flavor `property` in `context`
+ to `\'chocolate\'`?');
+  });
+});
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Using Handlebars expressions:
+
+{{ }} - содержимое внутри фигурных скобок служит заполнителем
+
+---
+
+
+<script id="foo" type="text/x-handlebars-template">
+  <p>{{bar}}</p>
+</script>
+
+---
+
+
+const source = document.getElementById('foo').innerHTML;
+
+const template = Handlebars.compile(source);
+
+const context = {
+  bar: 'Text of the paragraph element'
+};
+
+const compiledHtml = template(context);
+
+---
+
+
+const source = document.getElementById('greet').innerHTML 
+const template = Handlebars.compile(source);
+const context = {
+  greeting: 'Hello World!'
+}
+const compiledHtml = template(context);
+const fill = document.getElementById('hello');
+
+fill.innerHTML = compiledHtml;
+
+---
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello World!</title>
+    <link type="text/css" rel="stylesheet" href="public/style.css">
+    <script src="handlebars.min.js"></script>
+    <!--Create a new script element on the line below-->
+    <script id="greet" type="text/x-handlebars-template">
+    {{greeting}}
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Handlebar Expressions</h1>
+      <div id="hello">
+      </div>
+      <div class="blinker">|</div>
+    </div>  
+    <script src="public/main.js" type="text/javascript"></script>
+  </body>
+</html>
+
+---
+
+
+* {
+  color: white;
+  font-family: Verdana;
+}
+
+body {
+  background-color: #0F1931;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+
+.blinker {
+  animation: 1s blink step-end infinite;
+  color: #2E3D48;
+  font-size: 20px;  
+	font-weight: 100;
+  margin-left: -1%;
+}
+
+.container {
+  margin: 0 5%;
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: green;
+  }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Handlebars "If" block helper:
+
+const source = document.getElementById('ifHelper').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {opinion: true};
+
+const compiledHtml = template(context);
+
+const debateElement = document.getElementById('debate');
+debateElement.innerHTML = compiledHtml;
+
+---
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GIF!</title>
+    <script src="handlebars.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="public/style.css">
+    <!-- Add an {{if}} helper block in the script element below-->
+	  <script id="ifHelper" type="text/x-handlebars-template">
+ 			{{#if opinion}}
+      	<p>"The correct way to say 'GIF' is GIF!"</p>
+      {{/if}}
+    </script>    
+  </head>
+  <body>
+    <div class="bg">
+      <img class="bg-convo" src="https://s3.amazonaws.com/codecademy-content/courses/learn-handlebars/handlebars+if.svg">
+    </div>
+    <div id="debate">
+    </div>
+  </body>
+  <script src="public/main.js" type="text/javascript"></script>
+</html>
+
+---
+
+
+body {
+  margin: 0;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-convo {
+  width: 120%;
+}
+
+#debate {
+  font-family: Verdana;
+  font-size: 2em;
+  margin: 35% 30% 0 20%;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  min-width: 180px;
+  position: absolute;
+}
+  
+
+@media screen and (max-width: 450px){
+  .bg {
+    position: absolute;
+    z-index: -1;
+    width: 450px;
+  }
+
+  .bg-convo {
+    width: 450px;
+  }
+  
+  #debate {
+    font-family: Verdana;
+    font-size: 2em;
+    margin: 115px 130px 0 90px;
+    text-align: center;
+    width: 225px;
+    height: 100%;
+    position: absolute;
+  }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Handlebars "Else" section:
+
+const source = document.getElementById('ifHelper').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {
+  opinion: false
+};
+
+const compiledHtml = template(context);
+
+const debateElement = document.getElementById('debate');
+debateElement.innerHTML = compiledHtml;
+
+---
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GIF!</title>
+    <link href="public/style.css" type="text/css" rel="stylesheet">
+    <script src="handlebars.min.js"></script>
+    <script id="ifHelper" type="text/x-handlebars-template">
+      {{#if opinion}}
+        <p>"The correct way to say GIF is GIF!"</p>
+        {{else}}
+        <p>"There's no right way to say GIF!"</p>
+      {{/if}}
+    </script> 
+  </head>
+  <body>
+    <div class="bg">
+      <img class="bg-convo" src="https://s3.amazonaws.com/codecademy-content/courses/learn-handlebars/handlebars+if.svg">
+    </div>
+    <div id="debate">
+    </div>
+    <script src="public/main.js" type="text/javascript"></script>
+  </body>
+</html>
+
+---
+
+
+body {
+  margin: 0;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-convo {
+  width: 120%;
+}
+
+#debate {
+  font-family: Verdana;
+  font-size: 2em;
+  margin: 35% 30% 0 20%;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  min-width: 180px;
+  position: absolute;
+}
+  
+
+@media screen and (max-width: 450px){
+  .bg {
+    position: absolute;
+    z-index: -1;
+    width: 450px;
+  }
+
+  .bg-convo {
+    width: 450px;
+  }
+  
+  #debate {
+    font-family: Verdana;
+    font-size: 2em;
+    margin: 150px 130px 0 90px;
+    text-align: center;
+    width: 225px;
+    height: 100%;
+    position: absolute;
+  }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Handlebars "Each" and "This" - Part I:
+
+{{#each someArray}}
+  <p>{{this}} is the current element!</p>
+{{/each}}
+
+---
+
+
+const context = {
+  someArray: ['First', 'Second', 'Third'] 
+}
+
+---
+
+
+<p>First is the current element!</p>
+<p>Second is the current element!</p>
+<p>Third is the current element!</p>
+
+---
+
+
+const source = document.getElementById('eachHelper').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {
+  newArray: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+};
+
+const compiledHtml = template(context);
+
+const displayElements = document.getElementById('display');
+displayElements.innerHTML = compiledHtml;
+
+---
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Each Block[s]</title>
+    <link href="public/style.css" type="text/css" rel="stylesheet">
+    <script src="handlebars.min.js"></script>
+    <!-- Add an {{each}} helper block in the <script> element below-->
+    <script id="eachHelper" type="text/x-handlebars-template">
+    	{{#each newArray}}
+      	<div class="block">
+        	{{this}}
+        </div>
+      {{/each}}
+    </script>
+  </head>
+  <body>
+    <h1>Each Block[s]</h1>
+    <div id="display">
+    </div>
+    <script src="public/main.js" type="text/javascript"></script>
+  </body>
+</html>
+
+---
+
+body {
+  background-color: #0F1931;
+}
+
+h1 {
+  color: white;
+  font-family: Verdana;
+	font-weight: normal;
+  text-align: center;
+}
+
+#display {
+  margin: 0 15%;
+  width: 30%;
+}
+
+.block {
+  border: 20px solid #7C4723;
+  border-radius: 5px;
+  box-shadow:
+    0 0 0 2px hsl(0, 0%, 80%);
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 50px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 15%;
+  position: relative;
+	text-align: center;
+  width: 90px;
+}
+
+.block:nth-child(1n){
+  background-color: #fa4359;
+  margin-left: 70px;
+}
+
+.block:nth-child(2n){
+  background-color: #4b35ef;
+  margin-left: 25px;
+}
+
+.block:nth-child(3n){
+  background-color: #37c3be;
+  margin-left: -15px;
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Handlebars "Each" and "This" - Part II:
+
+const context = {
+  someArray: [
+    {shape: 'Triangle'},
+    {shape: 'Circle'},
+    {shape: 'Square'}
+  ] 
+}
+
+---
+
+
+{{#each someArray}}
+  <p>The current shape is: {{this.shape}}!</p>
+{{/each}}
+
+---
+
+
+<p>The current shape is: Triangle!</p>
+<p>The current shape is: Circle!</p>
+<p>The current shape is: Square!</p>
+
+---
+
+
+const source = document.getElementById('languagesTemp').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {
+  languages: [
+    {
+      name: 'HTML'
+    },
+    {
+      name:'CSS'
+    }, 
+    {
+      name: 'JavaScript'
+    }
+  ]
+};
+
+const compiledHtml = template(context);
+
+const displayGoals = document.getElementById('goals');
+displayGoals.innerHTML = compiledHtml;
+
+---
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Languages</title>
+    <link href="public/style.css" type="text/css" rel="stylesheet">
+    <script src="handlebars.min.js"></script>
+    <!-- Add an {{each}} helper block in the <script> element below-->
+    <script id="languagesTemp" type="text/x-handlebars-template">
+			{{#each languages}}
+      	<div class="card">
+        	<p>I should learn {{this.name}}.</p>
+        </div>
+      {{/each}}
+    </script>
+  </head>
+  <body>
+    <h1>
+      Thoughts on Languages:
+    </h1>
+    <div id="goals">
+    </div>
+  	<script src="public/main.js" type="text/javascript"></script>  
+  </body>
+</html>
+
+---
+
+
+body {
+  background-color: #0F1931;
+}
+
+h1 {
+  color: white;
+  font-family: Verdana;
+  font-weight: normal;
+  text-align: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  font-family: Verdana;
+  height: 15%;
+  margin: 2% auto;
+  padding: 2% 5%;
+  width: 80%;
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Combining "If" and "Each":
+
+const source = document.getElementById('languagesTemp').innerHTML;
+const template = Handlebars.compile(source);
+
+const context = {
+  languages: [
+    {
+      name: 'HTML',
+      modern: true
+    },
+    {
+      name:'CSS',
+      modern: true
+    }, 
+    {
+      name: 'JavaScript',
+      modern: true
+    },
+    {
+      name: 'COBOL',
+      modern: false
+    }
+  ]
+};
+
+const compiledHtml = template(context);
+
+const displayGoals = document.getElementById('goals');
+displayGoals.innerHTML = compiledHtml;
+
+---
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Languages</title>
+    <link href="public/style.css" type="text/css" rel="stylesheet">
+    <script src="handlebars.min.js"></script>
+    <script id="languagesTemp" type="text/x-handlebars-template">
+			{{#each languages}}
+      	<div class="card">
+          {{#if this.modern}}
+            <p>I should learn {{this.name}}.</p>
+          {{else}}
+            <p>When I have time, I'll learn {{this.name}}.</p>
+          {{/if}}
+        </div>
+      {{/each}}
+    </script>
+  </head>
+  <body>
+    <h1>
+      Thoughts on Languages:
+    </h1>
+    <div id="goals">
+    </div>
+  	<script src="public/main.js" type="text/javascript"></script>  
+  </body>
+</html>
+
+---
+
+
+body {
+  background-color: #0F1931;
+}
+
+h1 {
+  color: white;
+  font-family: Verdana;
+  font-weight: normal;
+  text-align: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  font-family: Verdana;
+  height: 15%;
+  margin: 2% auto;
+  padding: 2% 5%;
+  width: 80%;
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+{{someVariable}} - Handlebars использует выражения, которые завернуты в двойные скобки
+"text/x-handlebars-template" - для доставки шаблона в браузер
+Handlebar.compile() - возвращает шаблонную функцию из шаблонного сценария
+.compile() - будет принимать объект в качестве аргумента и использовать его в качестве контекста для создания строки, содержащей HTML
+{{if}} - будет условно рендерить блок кода
+{{else}} - выражение может быть вставлено в вспомогательный блок if и использовано как часть условного оператора
+{{each}} - является еще одним встроенным вспомогательным выражением, которое принимает массив для итерации
+{{this}} - выражение дает контекст и служит заполнителем для текущего значения
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
